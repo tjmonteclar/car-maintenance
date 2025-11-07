@@ -10,7 +10,6 @@ const Navbar: React.FC = () => {
 
   // Get user data from localStorage and update in real-time
   const updateUserData = () => {
-    // First try to get from userProfile
     const savedProfile = localStorage.getItem("userProfile");
     if (savedProfile) {
       try {
@@ -18,11 +17,10 @@ const Navbar: React.FC = () => {
         if (profile.name && profile.name.trim() !== "") {
           setUserName(profile.name);
         } else {
-          // Fallback to email username
-          const email = profile.email || localStorage.getItem("userEmail") || "User";
-          setUserName(email.split('@')[0]);
+          const email =
+            profile.email || localStorage.getItem("userEmail") || "User";
+          setUserName(email.split("@")[0]);
         }
-        // Update email from profile
         if (profile.email) {
           setUserEmail(profile.email);
         } else {
@@ -30,13 +28,12 @@ const Navbar: React.FC = () => {
         }
         return;
       } catch (error) {
-        console.error('Error parsing user profile:', error);
+        console.error("Error parsing user profile:", error);
       }
     }
 
-    // Fallback to email username
     const userEmail = localStorage.getItem("userEmail") || "User";
-    const emailName = userEmail.split('@')[0];
+    const emailName = userEmail.split("@")[0];
     setUserName(emailName);
     setUserEmail(userEmail);
   };
@@ -44,44 +41,39 @@ const Navbar: React.FC = () => {
   useEffect(() => {
     updateUserData();
 
-    // Listen for storage changes (in case profile is updated in another tab or component)
     const handleStorageChange = (e: StorageEvent) => {
       if (e.key === "userProfile" || e.key === "userEmail") {
         updateUserData();
       }
     };
 
-    // Custom event listener for profile updates within the same tab
     const handleProfileUpdate = () => {
       updateUserData();
     };
 
-    window.addEventListener('storage', handleStorageChange);
-    window.addEventListener('profileUpdated', handleProfileUpdate);
+    window.addEventListener("storage", handleStorageChange);
+    window.addEventListener("profileUpdated", handleProfileUpdate);
 
-    // Set up an interval to check for changes (fallback for same-tab updates)
     const interval = setInterval(updateUserData, 1000);
 
     return () => {
-      window.removeEventListener('storage', handleStorageChange);
-      window.removeEventListener('profileUpdated', handleProfileUpdate);
+      window.removeEventListener("storage", handleStorageChange);
+      window.removeEventListener("profileUpdated", handleProfileUpdate);
       clearInterval(interval);
     };
   }, []);
 
-  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleLogout = () => {
     localStorage.removeItem("isAuthenticated");
     localStorage.removeItem("userEmail");
-    // Removed: localStorage.removeItem("userProfile");
     navigate("/login");
   };
 
@@ -90,11 +82,12 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className={`sticky top-0 z-50 p-4 bg-gradient-to-r from-[#bfa14a] to-amber-600 shadow-lg transition-all duration-300 ${
-      isScrolled ? 'shadow-xl py-3' : 'py-4'
-    }`}>
+    <nav
+      className={`sticky top-0 z-50 p-4 bg-gradient-to-r from-[#bfa14a] to-amber-600 shadow-lg transition-all duration-300 ${
+        isScrolled ? "shadow-xl py-3" : "py-4"
+      }`}
+    >
       <div className="mx-auto px-2 sm:px-6 lg:px-8">
-        {/* Main container - full width flex */}
         <div className="flex flex-col sm:flex-row justify-between items-center w-full">
           <div className="flex items-center space-x-4 mb-3 sm:mb-0 group">
             <div className="relative">
@@ -103,7 +96,6 @@ const Navbar: React.FC = () => {
                 alt="Car Maintenance Logo"
                 className="w-14 h-14 rounded-full object-cover border-2 border-white shadow-lg group-hover:scale-110 transition-transform duration-300"
               />
-              {/* Removed gradient background on hover */}
             </div>
             <div className="text-left">
               <h1 className="text-xl font-bold text-white drop-shadow-sm">
@@ -117,7 +109,6 @@ const Navbar: React.FC = () => {
 
           {/* Right Side - Profile and Dropdown */}
           <div className="flex items-center space-x-6">
-            {/* Desktop Navigation Links */}
             <div className="hidden md:flex items-center space-x-1 bg-white/20 backdrop-blur-sm rounded-full px-2 py-1">
               <NavLink
                 to="/add-record"
@@ -146,16 +137,13 @@ const Navbar: React.FC = () => {
               </NavLink>
             </div>
 
-            {/* Profile Name - Visible on desktop */}
             <div className="hidden sm:block">
               <span className="text-white font-semibold text-sm bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
                 Welcome, {userName}
               </span>
             </div>
 
-            {/* Profile Circle Dropdown */}
             <div className="relative">
-              {/* Profile Circle Button */}
               <button
                 onClick={toggleDropdown}
                 className="relative w-12 h-12 bg-gradient-to-br from-gray-700 to-gray-900 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-amber-500 group"
@@ -163,14 +151,11 @@ const Navbar: React.FC = () => {
                 <span className="text-white font-bold text-lg group-hover:scale-110 transition-transform duration-300">
                   {userName.charAt(0).toUpperCase()}
                 </span>
-                {/* Animated ring */}
                 <div className="absolute -inset-1 bg-gradient-to-r from-amber-400 to-amber-600 rounded-full opacity-0 group-hover:opacity-100 blur transition duration-300 group-hover:duration-1000"></div>
               </button>
 
-              {/* Enhanced Dropdown Menu */}
               {isDropdownOpen && (
                 <div className="absolute right-0 mt-3 w-64 bg-white rounded-2xl shadow-2xl border border-gray-200/50 backdrop-blur-sm overflow-hidden z-50 animate-in slide-in-from-top-5 duration-300">
-                  {/* Profile Info in Dropdown */}
                   <div className="px-6 py-4 bg-gradient-to-r from-gray-50 to-amber-50 border-b border-gray-200/50">
                     <div className="flex items-center space-x-3">
                       <div className="w-10 h-10 bg-gradient-to-br from-[#bfa14a] to-amber-600 rounded-full flex items-center justify-center shadow-md">
@@ -179,7 +164,9 @@ const Navbar: React.FC = () => {
                         </span>
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm font-semibold text-gray-900 truncate">{userName}</p>
+                        <p className="text-sm font-semibold text-gray-900 truncate">
+                          {userName}
+                        </p>
                         <p className="text-xs text-gray-600 truncate">
                           {userEmail || "No email"}
                         </p>
@@ -187,7 +174,6 @@ const Navbar: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Navigation Links */}
                   <div className="py-2 px-2">
                     <NavLink
                       to="/dashboard"
@@ -200,8 +186,18 @@ const Navbar: React.FC = () => {
                         }`
                       }
                     >
-                      <svg className="w-5 h-5 mr-3 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                      <svg
+                        className="w-5 h-5 mr-3 text-amber-600"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                        />
                       </svg>
                       Dashboard
                     </NavLink>
@@ -217,8 +213,18 @@ const Navbar: React.FC = () => {
                         }`
                       }
                     >
-                      <svg className="w-5 h-5 mr-3 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                      <svg
+                        className="w-5 h-5 mr-3 text-amber-600"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 4v16m8-8H4"
+                        />
                       </svg>
                       Add Record
                     </NavLink>
@@ -234,13 +240,22 @@ const Navbar: React.FC = () => {
                         }`
                       }
                     >
-                      <svg className="w-5 h-5 mr-3 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                      <svg
+                        className="w-5 h-5 mr-3 text-amber-600"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                        />
                       </svg>
                       View Records
                     </NavLink>
 
-                    {/* Edit Profile Link */}
                     <NavLink
                       to="/edit-profile"
                       onClick={() => setIsDropdownOpen(false)}
@@ -252,21 +267,40 @@ const Navbar: React.FC = () => {
                         }`
                       }
                     >
-                      <svg className="w-5 h-5 mr-3 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                      <svg
+                        className="w-5 h-5 mr-3 text-amber-600"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                        />
                       </svg>
                       Edit Profile
                     </NavLink>
                   </div>
 
-                  {/* Logout Button */}
                   <div className="pt-2 px-2 border-t border-gray-200/50">
                     <button
                       onClick={handleLogout}
                       className="flex items-center w-full px-4 py-3 text-sm rounded-xl transition-all duration-300 text-red-600 hover:bg-red-50 hover:translate-x-1 group"
                     >
-                      <svg className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                      <svg
+                        className="w-5 h-5 mr-3 group-hover:scale-110 transition-transform duration-300"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                        />
                       </svg>
                       Logout
                     </button>
@@ -278,10 +312,10 @@ const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Overlay to close dropdown when clicking outside */}
+      {/* ✅ Fixed Overlay (no blur, just transparent click catcher) */}
       {isDropdownOpen && (
-        <div 
-          className="fixed inset-0 z-40 bg-black/10 backdrop-blur-sm" 
+        <div
+          className="fixed inset-0 z-40 bg-transparent"
           onClick={() => setIsDropdownOpen(false)}
         ></div>
       )}

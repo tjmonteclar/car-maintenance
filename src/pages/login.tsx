@@ -37,35 +37,39 @@ const Login: React.FC = () => {
 
     try {
       // Add a small delay to show the loading animation
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
       // Fetch users from JSON Server
-      const response = await fetch('http://localhost:3001/users');
-      
+      const response = await fetch("http://localhost:3001/users");
+
       if (!response.ok) {
-        throw new Error('Failed to connect to server');
+        throw new Error("Failed to connect to server");
       }
-      
+
       const users: User[] = await response.json();
 
       // Check if user exists
-      const user = users.find(u => u.email === email && u.password === password);
-      
+      const user = users.find(
+        (u) => u.email === email && u.password === password
+      );
+
       if (user) {
         // Save to localStorage
         localStorage.setItem("isAuthenticated", "true");
         localStorage.setItem("userEmail", user.email);
         localStorage.setItem("userName", user.name);
         localStorage.setItem("userId", user.id.toString());
-        
+
         // Redirect to dashboard
         navigate("/dashboard");
       } else {
         setError("Invalid email or password");
       }
     } catch (error) {
-      console.error('Login error:', error);
-      setError("Cannot connect to server. Make sure JSON Server is running on port 3001.");
+      console.error("Login error:", error);
+      setError(
+        "Cannot connect to server. Make sure JSON Server is running on port 3001."
+      );
     } finally {
       setLoading(false);
     }
@@ -77,101 +81,156 @@ const Login: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col" style={{ fontFamily: "Roboto" }}>
+    <div
+      className="min-h-screen flex flex-col"
+      style={{ fontFamily: "Roboto" }}
+    >
       {/* Main content area */}
       <div className="flex-1 flex">
         {/* Left Side - Background Image with Animations */}
-        <div 
+        <div
           className="hidden lg:flex lg:flex-1 relative"
           style={{
             backgroundImage: "url('/car.png')",
             backgroundSize: "cover",
             backgroundPosition: "center",
-            backgroundRepeat: "no-repeat"
+            backgroundRepeat: "no-repeat",
           }}
         >
           {/* Dark overlay for better readability */}
           <div className="absolute inset-0 bg-black/40"></div>
-          
+
           {/* Content on left side */}
-          <div className="relative z-10 flex flex-col justify-center items-center text-white p-12 w-full" style={{ fontFamily: "Roboto" }}>
+          <div
+            className="relative z-10 flex flex-col justify-center items-center text-white p-12 w-full"
+            style={{ fontFamily: "Roboto" }}
+          >
             {/* Enhanced Logo/Title with Animation */}
             <div className="flex justify-center mb-6">
-              <div className={`flex items-center transform transition-all duration-1000 ${
-                isMounted 
-                  ? "opacity-100 translate-y-0 scale-100" 
-                  : "opacity-0 -translate-y-10 scale-90"
-              }`}>
+              <div
+                className={`flex items-center transform transition-all duration-1000 ${
+                  isMounted
+                    ? "opacity-100 translate-y-0 scale-100"
+                    : "opacity-0 -translate-y-10 scale-90"
+                }`}
+              >
                 <div className="relative">
-                  <img 
-                    src="/sw-logo.png" 
-                    alt="Car Maintenance Tracker" 
-                    className="w-80 rounded-xl shadow-lg bg-white/20 backdrop-blur-sm p-2 hover:scale-105 transition-transform duration-300"
+                  <img
+                    src="/sw-logo.png"
+                    alt="Car Maintenance Tracker"
+                    className="w-80 rounded-xl shadow-lg bg-white/20 p-2 hover:scale-105 transition-transform duration-300"
                   />
-                  <div className="absolute -inset-1 bg-[#bfa14a] rounded-xl opacity-20 blur-sm"></div>
+                  <div className="absolute -inset-1 bg-[#bfa14a] rounded-xl opacity-20"></div>
                 </div>
               </div>
             </div>
-            
+
             {/* Animated Text */}
-            <div className={`transition-all duration-1000 delay-300 ${
-              isMounted 
-                ? "opacity-100 translate-y-0" 
-                : "opacity-0 translate-y-8"
-            }`}>
-              <p className="py-10 text-xl text-center text-white/90 max-w-md" style={{ fontFamily: "Tahoma" }}>
+            <div
+              className={`transition-all duration-1000 delay-300 ${
+                isMounted
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
+              }`}
+            >
+              <p
+                className="py-10 text-xl text-center text-white/90 max-w-md"
+                style={{ fontFamily: "Tahoma" }}
+              >
                 Track your vehicle maintenance with ease and precision
               </p>
             </div>
-            
+
             {/* Features list with staggered animation */}
             <div className="mt-8 space-y-4 max-w-sm">
-              <div className={`flex items-center transition-all duration-700 delay-500 ${
-                isMounted 
-                  ? "opacity-100 translate-x-0" 
-                  : "opacity-0 -translate-x-8"
-              }`}>
+              <div
+                className={`flex items-center transition-all duration-700 delay-500 ${
+                  isMounted
+                    ? "opacity-100 translate-x-0"
+                    : "opacity-0 -translate-x-8"
+                }`}
+              >
                 <div className="w-8 h-8 bg-[#bfa14a] rounded-full flex items-center justify-center mr-3">
-                  <span className="text-white text-sm" style={{ fontFamily: "Tahoma" }}>✓</span>
+                  <span
+                    className="text-white text-sm"
+                    style={{ fontFamily: "Tahoma" }}
+                  >
+                    ✓
+                  </span>
                 </div>
-                <span className="text-white/90" style={{ fontFamily: "Tahoma" }}>Maintenance Scheduling</span>
+                <span
+                  className="text-white/90"
+                  style={{ fontFamily: "Tahoma" }}
+                >
+                  Maintenance Scheduling
+                </span>
               </div>
-              <div className={`flex items-center transition-all duration-700 delay-700 ${
-                isMounted 
-                  ? "opacity-100 translate-x-0" 
-                  : "opacity-0 -translate-x-8"
-              }`}>
+              <div
+                className={`flex items-center transition-all duration-700 delay-700 ${
+                  isMounted
+                    ? "opacity-100 translate-x-0"
+                    : "opacity-0 -translate-x-8"
+                }`}
+              >
                 <div className="w-8 h-8 bg-[#bfa14a] rounded-full flex items-center justify-center mr-3">
-                  <span className="text-white text-sm" style={{ fontFamily: "Tahoma" }}>✓</span>
+                  <span
+                    className="text-white text-sm"
+                    style={{ fontFamily: "Tahoma" }}
+                  >
+                    ✓
+                  </span>
                 </div>
-                <span className="text-white/90" style={{ fontFamily: "Tahoma" }}>Service History Tracking</span>
+                <span
+                  className="text-white/90"
+                  style={{ fontFamily: "Tahoma" }}
+                >
+                  Service History Tracking
+                </span>
               </div>
-              <div className={`flex items-center transition-all duration-500 delay-1000 ${
-                isMounted 
-                  ? "opacity-100 translate-x-0" 
-                  : "opacity-0 -translate-x-8"
-              }`}>
+              <div
+                className={`flex items-center transition-all duration-500 delay-1000 ${
+                  isMounted
+                    ? "opacity-100 translate-x-0"
+                    : "opacity-0 -translate-x-8"
+                }`}
+              >
                 <div className="w-8 h-8 bg-[#bfa14a] rounded-full flex items-center justify-center mr-3">
-                  <span className="text-white text-sm" style={{ fontFamily: "Tahoma" }}>✓</span>
+                  <span
+                    className="text-white text-sm"
+                    style={{ fontFamily: "Tahoma" }}
+                  >
+                    ✓
+                  </span>
                 </div>
-                <span className="text-white/90" style={{ fontFamily: "Tahoma" }}>Cost Management</span>
+                <span
+                  className="text-white/90"
+                  style={{ fontFamily: "Tahoma" }}
+                >
+                  Cost Management
+                </span>
               </div>
             </div>
           </div>
         </div>
 
         {/* Right Side - Login Form (No Animations) */}
-        <div className="flex-1 flex flex-col justify-center py-10 px-6 lg:px-12 relative" style={{ fontFamily: "Tahoma" }}>
+        <div
+          className="flex-1 flex flex-col justify-center py-10 px-6 lg:px-12 relative"
+          style={{ fontFamily: "Tahoma" }}
+        >
           <div className="relative z-10 mx-auto w-full max-w-md">
             {/* Mobile Logo - No Animation */}
             <div className="lg:hidden flex justify-center mb-8">
               <div className="flex items-center">
-                <img 
-                  src="/logo.png" 
-                  alt="Car Maintenance Tracker" 
+                <img
+                  src="/logo.png"
+                  alt="Car Maintenance Tracker"
                   className="h-20 w-12 rounded-xl shadow-lg bg-white/20 backdrop-blur-sm p-2"
                 />
-                <h1 className="ml-3 text-2xl font-bold text-white" style={{ fontFamily: "Tahoma" }}>
+                <h1
+                  className="ml-3 text-2xl font-bold text-white"
+                  style={{ fontFamily: "Tahoma" }}
+                >
                   SUPER WHEELS
                 </h1>
               </div>
@@ -179,7 +238,10 @@ const Login: React.FC = () => {
 
             {/* Form Title - No Animation */}
             <div className="text-center lg:text-left mb-8">
-              <h2 className="text-3xl font-bold text-black" style={{ fontFamily: "Sans-Serif" }}>
+              <h2
+                className="text-3xl font-bold text-black"
+                style={{ fontFamily: "Sans-Serif" }}
+              >
                 Sign in to your account
               </h2>
             </div>
@@ -188,13 +250,20 @@ const Login: React.FC = () => {
             <div className="bg-white/95 backdrop-blur-sm py-8 px-6 shadow-2xl sm:rounded-2xl border border-white/20">
               <form className="space-y-6" onSubmit={handleSubmit}>
                 {error && (
-                  <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg text-sm" style={{ fontFamily: "Tahoma" }}>
+                  <div
+                    className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg text-sm"
+                    style={{ fontFamily: "Tahoma" }}
+                  >
                     {error}
                   </div>
                 )}
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2" style={{ fontFamily: "Tahoma" }}>
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                    style={{ fontFamily: "Tahoma" }}
+                  >
                     Email address
                   </label>
                   <div className="relative">
@@ -217,7 +286,11 @@ const Login: React.FC = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2" style={{ fontFamily: "Tahoma" }}>
+                  <label
+                    htmlFor="password"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                    style={{ fontFamily: "Tahoma" }}
+                  >
                     Password
                   </label>
                   <div className="relative">
@@ -247,13 +320,21 @@ const Login: React.FC = () => {
                       type="checkbox"
                       className="h-4 w-4 text-[#bfa14a] focus:ring-[#bfa14a] border-gray-300 rounded"
                     />
-                    <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900" style={{ fontFamily: "Tahoma" }}>
+                    <label
+                      htmlFor="remember-me"
+                      className="ml-2 block text-sm text-gray-900"
+                      style={{ fontFamily: "Tahoma" }}
+                    >
                       Remember me
                     </label>
                   </div>
 
                   <div className="text-sm">
-                    <a href="#" className="font-medium text-gray-600 hover:text-[#bfa14a] transition-colors duration-200" style={{ fontFamily: "Tahoma" }}>
+                    <a
+                      href="#"
+                      className="font-medium text-gray-600 hover:text-[#bfa14a] transition-colors duration-200"
+                      style={{ fontFamily: "Tahoma" }}
+                    >
                       Forgot password?
                     </a>
                   </div>
@@ -265,10 +346,23 @@ const Login: React.FC = () => {
                     className="group w-full flex justify-center py-3 px-4 border border-transparent rounded-xl shadow-lg text-sm font-medium text-white bg-gradient-to-r from-[#bfa14a] to-amber-600 hover:from-amber-600 hover:to-[#bfa14a] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#bfa14a] transform hover:scale-[1.02] transition-all duration-200"
                     style={{ fontFamily: "Tahoma" }}
                   >
-                    <span className="flex items-center" style={{ fontFamily: "Tahoma" }}>
+                    <span
+                      className="flex items-center"
+                      style={{ fontFamily: "Tahoma" }}
+                    >
                       Sign in
-                      <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      <svg
+                        className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-200"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M13 7l5 5m0 0l-5 5m5-5H6"
+                        />
                       </svg>
                     </span>
                   </button>
@@ -277,11 +371,15 @@ const Login: React.FC = () => {
 
               {/* Register Link - No Animation */}
               <div className="mt-6 text-center">
-                <p className="text-sm text-gray-600" style={{ fontFamily: "Tahoma" }}>
-                  New to SUPER WHEELS?{" "}
-                  <Link 
-                    to="/register" 
-                    className="font-medium text-gray-600 hover:text-[#bfa14a] transition-colors duration-200" style={{ fontFamily: "Tahoma" }}
+                <p
+                  className="text-sm text-gray-600"
+                  style={{ fontFamily: "Tahoma" }}
+                >
+                  No account yet?{" "}
+                  <Link
+                    to="/register"
+                    className="font-medium text-gray-600 hover:text-[#bfa14a] transition-colors duration-200"
+                    style={{ fontFamily: "Tahoma" }}
                   >
                     Create your account
                   </Link>
