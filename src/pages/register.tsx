@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import LoginLoading from "../components/loading";
-import { mockUsers } from "../mockData";
 
 interface User {
   id: string;
@@ -54,13 +53,32 @@ const Register: React.FC = () => {
     try {
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
-      const existingUser = mockUsers.find((u) => u.email === formData.email);
+      // FIXED: Use real Render API instead of mock data
+      const API_URL =
+        process.env.REACT_APP_API_URL ||
+        "https://car-maintenance-backend-fxay.onrender.com";
+
+      // Check if user already exists using real API
+      const checkResponse = await fetch(
+        `${API_URL}/users?email=${formData.email}`
+      );
+
+      if (!checkResponse.ok) {
+        throw new Error("Failed to check existing users");
+      }
+
+      const existingUsers: User[] = await checkResponse.json();
+      const existingUser = existingUsers.find(
+        (u) => u.email === formData.email
+      );
+
       if (existingUser) {
         setError("User with this email already exists");
         setLoading(false);
         return;
       }
 
+      // Create new user using real API
       const newUser: User = {
         id: Date.now().toString(),
         name: formData.name,
@@ -70,18 +88,26 @@ const Register: React.FC = () => {
 
       console.log("Creating user:", newUser);
 
-      const existingUsers = JSON.parse(
-        localStorage.getItem("registeredUsers") || "[]"
-      );
-      const updatedUsers = [...existingUsers, newUser];
-      localStorage.setItem("registeredUsers", JSON.stringify(updatedUsers));
+      const createResponse = await fetch(`${API_URL}/users`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newUser),
+      });
 
-      console.log("User created successfully");
+      if (!createResponse.ok) {
+        throw new Error("Failed to create user");
+      }
 
+      const createdUser = await createResponse.json();
+      console.log("User created successfully:", createdUser);
+
+      // Auto-login after successful registration
       localStorage.setItem("isAuthenticated", "true");
-      localStorage.setItem("userEmail", newUser.email);
-      localStorage.setItem("userName", newUser.name);
-      localStorage.setItem("userId", newUser.id);
+      localStorage.setItem("userEmail", createdUser.email);
+      localStorage.setItem("userName", createdUser.name);
+      localStorage.setItem("userId", createdUser.id);
 
       navigate("/dashboard");
     } catch (error) {

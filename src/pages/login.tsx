@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import LoginLoading from "../components/loading";
 import Footer from "../components/footer";
-import { mockUsers } from "../mockData";
 
 interface User {
   id: string;
@@ -37,7 +36,19 @@ const Login: React.FC = () => {
     try {
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
-      const user = mockUsers.find(
+      // FIXED: Use real Render API instead of mock data
+      const API_URL =
+        process.env.REACT_APP_API_URL ||
+        "https://car-maintenance-backend-fxay.onrender.com";
+
+      const response = await fetch(`${API_URL}/users?email=${email}`);
+
+      if (!response.ok) {
+        throw new Error("Failed to connect to server");
+      }
+
+      const users: User[] = await response.json();
+      const user = users.find(
         (u) => u.email === email && u.password === password
       );
 
@@ -53,7 +64,7 @@ const Login: React.FC = () => {
       }
     } catch (error) {
       console.error("Login error:", error);
-      setError("Invalid email or password");
+      setError("Cannot connect to server. Please try again later.");
     } finally {
       setLoading(false);
     }
