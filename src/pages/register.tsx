@@ -55,7 +55,7 @@ const Register: React.FC = () => {
 
       const API_URL =
         process.env.REACT_APP_API_URL ||
-        "https://car-maintenance-backend-fxay.onrender.com";
+        "https://car-maintenance-backend.vercel.app";
 
       const checkResponse = await fetch(
         `${API_URL}/users?email=${formData.email}`

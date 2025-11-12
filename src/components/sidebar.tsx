@@ -29,7 +29,6 @@ const Sidebar: React.FC<SidebarProps> = () => {
     null
   );
 
-  // State for user profile to allow updates
   const [userProfile, setUserProfile] = useState(() => {
     const savedProfile = localStorage.getItem("userProfile");
     if (savedProfile) {
@@ -75,7 +74,6 @@ const Sidebar: React.FC<SidebarProps> = () => {
     ];
   });
 
-  // Function to update user profile data
   const updateUserProfile = () => {
     const savedProfile = localStorage.getItem("userProfile");
     const userEmail = localStorage.getItem("userEmail") || "User";
@@ -83,7 +81,7 @@ const Sidebar: React.FC<SidebarProps> = () => {
     if (savedProfile) {
       const profile = JSON.parse(savedProfile);
       setUserProfile(profile);
-      // Use the name from profile if available, otherwise fall back to email
+
       setUserName(profile.name || userEmail.split("@")[0]);
     } else {
       setUserProfile(null);
@@ -91,19 +89,15 @@ const Sidebar: React.FC<SidebarProps> = () => {
     }
   };
 
-  // Listen for profile updates
   useEffect(() => {
-    // Initial load
     updateUserProfile();
 
-    // Listen for storage events (when profile is updated from other tabs/windows)
     const handleStorageChange = (e: StorageEvent) => {
       if (e.key === "userProfile" || e.key === "userEmail") {
         updateUserProfile();
       }
     };
 
-    // Listen for custom event when profile is saved
     const handleProfileSaved = () => {
       updateUserProfile();
     };
@@ -111,7 +105,6 @@ const Sidebar: React.FC<SidebarProps> = () => {
     window.addEventListener("storage", handleStorageChange);
     window.addEventListener("profileSaved", handleProfileSaved);
 
-    // Poll for changes (fallback for same-tab updates)
     const interval = setInterval(updateUserProfile, 1000);
 
     return () => {
@@ -121,7 +114,6 @@ const Sidebar: React.FC<SidebarProps> = () => {
     };
   }, []);
 
-  // Save states to localStorage
   useEffect(() => {
     localStorage.setItem("sidebarOpen", JSON.stringify(isOpen));
   }, [isOpen]);
@@ -160,12 +152,11 @@ const Sidebar: React.FC<SidebarProps> = () => {
     };
   }, []);
 
-  // Improved drag and drop handlers
   const handleDragStart = (e: React.DragEvent, path: string) => {
     setDraggingId(path);
     setDropPosition(null);
     e.dataTransfer.effectAllowed = "move";
-    // Add a slight delay to prevent immediate re-renders
+
     setTimeout(() => {}, 0);
   };
 
@@ -183,7 +174,6 @@ const Sidebar: React.FC<SidebarProps> = () => {
     const mouseY = e.clientY;
     const targetMiddle = rect.top + rect.height / 2;
 
-    // Determine if drop should be above or below based on mouse position
     const position = mouseY < targetMiddle ? "above" : "below";
 
     setDragOverId(path);
@@ -191,7 +181,6 @@ const Sidebar: React.FC<SidebarProps> = () => {
   };
 
   const handleDragLeave = (e: React.DragEvent) => {
-    // Only reset if leaving the entire draggable area, not just moving between children
     const relatedTarget = e.relatedTarget as Node;
     if (!e.currentTarget.contains(relatedTarget)) {
       setDragOverId(null);
@@ -220,7 +209,6 @@ const Sidebar: React.FC<SidebarProps> = () => {
 
     let newIndex = dropIndex;
 
-    // Adjust the insertion index based on drop position
     if (dropPosition === "below" && draggedIndex < dropIndex) {
       newIndex = dropIndex;
     } else if (dropPosition === "below" && draggedIndex > dropIndex) {
@@ -231,7 +219,6 @@ const Sidebar: React.FC<SidebarProps> = () => {
       newIndex = dropIndex - 1;
     }
 
-    // Ensure newIndex is within bounds
     newIndex = Math.max(0, Math.min(newIndex, menuItems.length));
 
     const newItems = [...menuItems];
@@ -373,7 +360,6 @@ const Sidebar: React.FC<SidebarProps> = () => {
                     : "cursor-grab"
                 }`}
               >
-                {/* Drop indicator above - only show when dragging over this item with 'above' position */}
                 {isDragOver && dropPosition === "above" && (
                   <div className="relative mb-2">
                     <div className="w-full h-1 bg-blue-400 rounded-full shadow-sm"></div>
@@ -431,11 +417,8 @@ const Sidebar: React.FC<SidebarProps> = () => {
                       <div className="absolute -left-1 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-gray-900/90 rotate-45"></div>
                     </div>
                   )}
-
-                  {/* Removed the active indicator dot */}
                 </NavLink>
 
-                {/* Drop indicator below - only show when dragging over this item with 'below' position */}
                 {isDragOver && dropPosition === "below" && (
                   <div className="relative mt-2">
                     <div className="w-full h-1 bg-blue-400 rounded-full shadow-sm"></div>

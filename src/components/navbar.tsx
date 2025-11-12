@@ -8,7 +8,6 @@ const Navbar: React.FC = () => {
   const [userName, setUserName] = useState("User");
   const [userEmail, setUserEmail] = useState("");
 
-  // Get user data from localStorage and update in real-time
   const updateUserData = () => {
     const savedProfile = localStorage.getItem("userProfile");
     if (savedProfile) {
@@ -107,7 +106,6 @@ const Navbar: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Side - Profile and Dropdown */}
           <div className="flex items-center space-x-6">
             <div className="hidden md:flex items-center space-x-1 bg-white/20 backdrop-blur-sm rounded-full px-2 py-1">
               <NavLink
@@ -312,7 +310,6 @@ const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* ✅ Fixed Overlay (no blur, just transparent click catcher) */}
       {isDropdownOpen && (
         <div
           className="fixed inset-0 z-40 bg-transparent"

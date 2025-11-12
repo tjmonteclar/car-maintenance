@@ -39,7 +39,7 @@ const Dashboard: React.FC = () => {
       try {
         const API_URL =
           process.env.REACT_APP_API_URL ||
-          "https://car-maintenance-backend-fxay.onrender.com";
+          "https://car-maintenance-backend.vercel.app";
         console.log("Fetching records from:", `${API_URL}/records`);
 
         const response = await fetch(`${API_URL}/records`);

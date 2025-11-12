@@ -48,7 +48,9 @@ const ViewRecords: React.FC = () => {
 
   const fetchRecords = async () => {
     try {
-      const response = await fetch("http://localhost:3001/records");
+      const response = await fetch(
+        "https://car-maintenance-backend.vercel.app"
+      );
       if (!response.ok) {
         throw new Error("Failed to fetch records");
       }

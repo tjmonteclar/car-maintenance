@@ -76,12 +76,10 @@ const AddRecord: React.FC = () => {
       [name]: value,
     }));
 
-    // Validate field on change
     validateField(name, value);
   };
 
   const addPart = () => {
-    // Validate required fields
     if (!formData.partType) {
       setErrors((prev) => ({ ...prev, partType: "Please select a part type" }));
       return;
@@ -100,7 +98,6 @@ const AddRecord: React.FC = () => {
 
     setParts([...parts, newPart]);
 
-    // Reset part form
     setFormData((prev) => ({
       ...prev,
       partType: "",
@@ -113,7 +110,6 @@ const AddRecord: React.FC = () => {
       partCost: "0.00",
     }));
 
-    // Clear part errors
     setErrors((prev) => {
       const newErrors = { ...prev };
       delete newErrors.partType;
@@ -149,7 +145,6 @@ const AddRecord: React.FC = () => {
     e.preventDefault();
 
     if (!validateForm()) {
-      // Scroll to first error
       const firstError = Object.keys(errors)[0];
       const element = document.querySelector(`[name="${firstError}"]`);
       element?.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -161,7 +156,6 @@ const AddRecord: React.FC = () => {
     try {
       const totalCost = calculateTotalCost();
 
-      // Transform parts data for the backend
       const transformedParts = parts.map((part) => ({
         partType: part.partType,
         replaced: part.replaced,
@@ -174,7 +168,7 @@ const AddRecord: React.FC = () => {
       }));
 
       const recordData = {
-        id: Date.now().toString(), // Generate unique ID
+        id: Date.now().toString(),
         driverName: formData.driverName,
         carPlate: formData.carPlate,
         carModel: formData.carModel,
@@ -187,10 +181,9 @@ const AddRecord: React.FC = () => {
 
       console.log("Saving record:", recordData);
 
-      // FIXED: Save to Render API instead of localStorage
       const API_URL =
         process.env.REACT_APP_API_URL ||
-        "https://car-maintenance-backend-fxay.onrender.com";
+        "https://car-maintenance-backend.vercel.app";
 
       const response = await fetch(`${API_URL}/records`, {
         method: "POST",
@@ -209,14 +202,12 @@ const AddRecord: React.FC = () => {
       const savedRecord = await response.json();
       console.log("Record saved successfully:", savedRecord);
 
-      // Show success message and redirect
       setTimeout(() => {
         navigate("/view-records");
       }, 1000);
     } catch (error) {
       console.error("Error saving record:", error);
 
-      // Type-safe error handling
       if (error instanceof Error) {
         alert(`Failed to save record: ${error.message}. Please try again.`);
       } else {
@@ -227,7 +218,6 @@ const AddRecord: React.FC = () => {
     }
   };
 
-  // Check if form is valid for submission
   const isFormValid =
     formData.driverName &&
     formData.carPlate &&
@@ -237,7 +227,6 @@ const AddRecord: React.FC = () => {
   return (
     <Layout pageTitle="Add Record">
       <div className="max-w-7xl mx-auto space-y-8">
-        {/* Enhanced Header */}
         <div className="text-center hidden lg:block mb-8">
           <h1 className="text-3xl font-bold text-black font-['Tahoma']">
             Add Maintenance Record
@@ -248,9 +237,7 @@ const AddRecord: React.FC = () => {
           </p>
         </div>
 
-        {/* Main Form Container */}
         <div className="bg-white shadow-2xl rounded-3xl overflow-hidden border border-[#7cabfc]/20">
-          {/* Progress Steps */}
           <div className="bg-gradient-to-r from-gray-50 to-blue-50 px-8 py-6 border-b border-gray-200">
             <div className="flex items-center justify-center space-x-8">
               <div className="flex items-center space-x-3">
@@ -303,7 +290,6 @@ const AddRecord: React.FC = () => {
           </div>
 
           <form onSubmit={handleSubmit}>
-            {/* Driver & Vehicle Information Section */}
             <div className="p-8 border-b border-gray-200/60">
               <div className="flex items-center space-x-4 mb-8">
                 <div className="w-12 h-12 bg-gradient-to-br from-[#7cabfc] to-blue-600 rounded-xl flex items-center justify-center shadow-lg">
@@ -332,7 +318,6 @@ const AddRecord: React.FC = () => {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {/* Driver Name */}
                 <div className="group">
                   <label className="block text-sm font-semibold text-gray-700 mb-3 uppercase tracking-wide">
                     Driver Name *
@@ -374,7 +359,6 @@ const AddRecord: React.FC = () => {
                   )}
                 </div>
 
-                {/* Car Plate No */}
                 <div className="group">
                   <label className="block text-sm font-semibold text-gray-700 mb-3 uppercase tracking-wide">
                     License Plate *
@@ -416,7 +400,6 @@ const AddRecord: React.FC = () => {
                   )}
                 </div>
 
-                {/* Car Model */}
                 <div className="md:col-span-2 group">
                   <label className="block text-sm font-semibold text-gray-700 mb-3 uppercase tracking-wide">
                     Vehicle Model *
@@ -460,7 +443,6 @@ const AddRecord: React.FC = () => {
               </div>
             </div>
 
-            {/* Parts Information Section */}
             <div className="p-8">
               <div className="flex items-center space-x-4 mb-8">
                 <div className="w-12 h-12 bg-gradient-to-br from-[#7cabfc] to-blue-600 rounded-xl flex items-center justify-center shadow-lg">
@@ -494,7 +476,6 @@ const AddRecord: React.FC = () => {
                 </div>
               </div>
 
-              {/* Parts Validation Error */}
               {errors.parts && (
                 <div className="mb-8 p-6 bg-gradient-to-r from-red-50 to-red-100 border border-red-200 rounded-2xl">
                   <div className="flex items-center space-x-3">
@@ -518,7 +499,6 @@ const AddRecord: React.FC = () => {
                 </div>
               )}
 
-              {/* Add Part Form */}
               <div className="bg-gradient-to-br from-gray-50 to-blue-50/50 p-8 rounded-2xl mb-8 border-2 border-dashed border-[#7cabfc]/40">
                 <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
                   <span className="w-2 h-6 bg-[#7cabfc] rounded-full mr-3"></span>
@@ -526,7 +506,6 @@ const AddRecord: React.FC = () => {
                 </h3>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-                  {/* Part Type */}
                   <div className="group">
                     <label className="block text-sm font-semibold text-gray-700 mb-3">
                       Part Type *
@@ -556,7 +535,6 @@ const AddRecord: React.FC = () => {
                     )}
                   </div>
 
-                  {/* Part Replaced */}
                   <div className="group">
                     <label className="block text-sm font-semibold text-gray-700 mb-3">
                       Part Replaced
@@ -573,7 +551,6 @@ const AddRecord: React.FC = () => {
                     </select>
                   </div>
 
-                  {/* Part Brand Name */}
                   <div className="group">
                     <label className="block text-sm font-semibold text-gray-700 mb-3">
                       Brand Name
@@ -589,7 +566,6 @@ const AddRecord: React.FC = () => {
                     />
                   </div>
 
-                  {/* Supplier */}
                   <div className="group">
                     <label className="block text-sm font-semibold text-gray-700 mb-3">
                       Supplier
@@ -606,9 +582,7 @@ const AddRecord: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Second row of parts information */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                  {/* Manufacture Date */}
                   <div className="group">
                     <label className="block text-sm font-semibold text-gray-700 mb-3">
                       Manufacture Date
@@ -623,7 +597,6 @@ const AddRecord: React.FC = () => {
                     />
                   </div>
 
-                  {/* Expiry Date */}
                   <div className="group">
                     <label className="block text-sm font-semibold text-gray-700 mb-3">
                       Expiry Date
@@ -638,7 +611,6 @@ const AddRecord: React.FC = () => {
                     />
                   </div>
 
-                  {/* Part Change Date */}
                   <div className="group">
                     <label className="block text-sm font-semibold text-gray-700 mb-3">
                       Change Date
@@ -653,7 +625,6 @@ const AddRecord: React.FC = () => {
                     />
                   </div>
 
-                  {/* Part Cost */}
                   <div className="group">
                     <label className="block text-sm font-semibold text-gray-700 mb-3">
                       Part Cost ($)
@@ -701,7 +672,6 @@ const AddRecord: React.FC = () => {
                 </button>
               </div>
 
-              {/* Added Parts List - Enhanced Version */}
               {parts.length > 0 && (
                 <div className="mb-6">
                   <div className="flex items-center justify-between mb-6">
@@ -721,7 +691,6 @@ const AddRecord: React.FC = () => {
                       >
                         <div className="flex items-start justify-between">
                           <div className="flex-1">
-                            {/* Top Row: Part Type and Cost */}
                             <div className="flex items-center justify-between mb-4">
                               <div className="flex items-center space-x-3">
                                 <span className="font-bold text-gray-900 text-lg">
@@ -742,7 +711,6 @@ const AddRecord: React.FC = () => {
                               </span>
                             </div>
 
-                            {/* Middle Row: Brand and Supplier */}
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                               <div className="flex items-center space-x-2">
                                 <span className="text-gray-500 font-medium">
@@ -762,7 +730,6 @@ const AddRecord: React.FC = () => {
                               </div>
                             </div>
 
-                            {/* Bottom Row: Dates */}
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
                               <div>
                                 <span className="text-gray-500">
@@ -804,7 +771,6 @@ const AddRecord: React.FC = () => {
               )}
             </div>
 
-            {/* Submit Button */}
             <div className="px-8 py-8 bg-gradient-to-r from-gray-50 to-blue-50/30 border-t border-gray-200/60">
               <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0">
                 <div className="text-center lg:text-left">

@@ -20,7 +20,6 @@ const EditProfile: React.FC = () => {
     company: "",
   });
 
-  // Load user data on component mount
   useEffect(() => {
     const userEmail = localStorage.getItem("userEmail") || "";
     const userName = userEmail.split("@")[0] || "User";
@@ -28,7 +27,6 @@ const EditProfile: React.FC = () => {
     const savedProfile = localStorage.getItem("userProfile");
     if (savedProfile) {
       const parsedProfile = JSON.parse(savedProfile);
-      // Remove position field if it exists in old data
       const { position, ...profileWithoutPosition } = parsedProfile;
       setProfile(profileWithoutPosition);
     } else {
@@ -90,7 +88,6 @@ const EditProfile: React.FC = () => {
   return (
     <Layout pageTitle="Edit Profile">
       <div className="max-w-4xl mx-auto">
-        {/* Header with Gradient Background */}
         <div className="bg-gradient-to-r from-gray-50 to-gray-100 px-8 py-6 border-b border-gray-200 rounded-2xl p-8 text-center mb-8 shadow-lg">
           <div className="w-20 h-20 bg-gradient-to-br from-[#7cabfc] to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
             <svg
@@ -115,9 +112,7 @@ const EditProfile: React.FC = () => {
           </p>
         </div>
 
-        {/* Profile Information Card */}
         <div className="bg-white shadow-xl rounded-2xl overflow-hidden border border-[#7cabfc]/20">
-          {/* Card Header */}
           <div className="bg-gradient-to-r from-gray-50 to-gray-100 px-8 py-6 border-b border-gray-200">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
@@ -151,13 +146,10 @@ const EditProfile: React.FC = () => {
             </div>
           </div>
 
-          {/* Form Content */}
           <div className="p-8">
             <form onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                {/* Left Column */}
                 <div className="space-y-6">
-                  {/* Full Name */}
                   <div className="group">
                     <label className="block text-sm font-semibold text-gray-700 mb-3 uppercase tracking-wide">
                       Full Name
@@ -191,7 +183,6 @@ const EditProfile: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Email */}
                   <div className="group">
                     <label className="block text-sm font-semibold text-gray-700 mb-3 uppercase tracking-wide">
                       Email Address
@@ -226,9 +217,7 @@ const EditProfile: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Right Column */}
                 <div className="space-y-6">
-                  {/* Phone Number */}
                   <div className="group">
                     <label className="block text-sm font-semibold text-gray-700 mb-3 uppercase tracking-wide">
                       Phone Number
@@ -261,7 +250,6 @@ const EditProfile: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Company */}
                   <div className="group">
                     <label className="block text-sm font-semibold text-gray-700 mb-3 uppercase tracking-wide">
                       Company
@@ -296,7 +284,6 @@ const EditProfile: React.FC = () => {
                 </div>
               </div>
 
-              {/* Success Message */}
               {saved && (
                 <div className="mt-8 p-4 bg-green-50 border border-green-200 rounded-xl">
                   <div className="flex items-center space-x-3">
@@ -327,7 +314,6 @@ const EditProfile: React.FC = () => {
                 </div>
               )}
 
-              {/* Action Buttons */}
               <div className="mt-12 pt-8 border-t border-gray-200">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0">
                   <button
@@ -405,7 +391,6 @@ const EditProfile: React.FC = () => {
           </div>
         </div>
 
-        {/* Additional Info Card */}
         <div className="mt-8 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-6 border border-blue-200">
           <div className="flex items-start space-x-4">
             <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
