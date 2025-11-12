@@ -53,12 +53,10 @@ const Register: React.FC = () => {
     try {
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
-      // FIXED: Use real Render API instead of mock data
       const API_URL =
         process.env.REACT_APP_API_URL ||
         "https://car-maintenance-backend-fxay.onrender.com";
 
-      // Check if user already exists using real API
       const checkResponse = await fetch(
         `${API_URL}/users?email=${formData.email}`
       );
@@ -78,7 +76,6 @@ const Register: React.FC = () => {
         return;
       }
 
-      // Create new user using real API
       const newUser: User = {
         id: Date.now().toString(),
         name: formData.name,
@@ -103,7 +100,6 @@ const Register: React.FC = () => {
       const createdUser = await createResponse.json();
       console.log("User created successfully:", createdUser);
 
-      // Auto-login after successful registration
       localStorage.setItem("isAuthenticated", "true");
       localStorage.setItem("userEmail", createdUser.email);
       localStorage.setItem("userName", createdUser.name);

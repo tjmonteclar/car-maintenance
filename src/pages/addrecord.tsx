@@ -161,7 +161,7 @@ const AddRecord: React.FC = () => {
     try {
       const totalCost = calculateTotalCost();
 
-      // Transform parts data for storage
+      // Transform parts data for the backend
       const transformedParts = parts.map((part) => ({
         partType: part.partType,
         replaced: part.replaced,
@@ -185,17 +185,29 @@ const AddRecord: React.FC = () => {
         parts: transformedParts,
       };
 
-      // FIXED: Save to localStorage instead of localhost:3001
-      const existingRecords = JSON.parse(
-        localStorage.getItem("maintenanceRecords") || "[]"
-      );
-      const updatedRecords = [...existingRecords, recordData];
-      localStorage.setItem(
-        "maintenanceRecords",
-        JSON.stringify(updatedRecords)
-      );
+      console.log("Saving record:", recordData);
 
-      console.log("Record saved successfully:", recordData);
+      // FIXED: Save to Render API instead of localStorage
+      const API_URL =
+        process.env.REACT_APP_API_URL ||
+        "https://car-maintenance-backend-fxay.onrender.com";
+
+      const response = await fetch(`${API_URL}/records`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(recordData),
+      });
+
+      if (!response.ok) {
+        throw new Error(
+          `Failed to save record: ${response.status} ${response.statusText}`
+        );
+      }
+
+      const savedRecord = await response.json();
+      console.log("Record saved successfully:", savedRecord);
 
       // Show success message and redirect
       setTimeout(() => {
@@ -203,7 +215,13 @@ const AddRecord: React.FC = () => {
       }, 1000);
     } catch (error) {
       console.error("Error saving record:", error);
-      alert("Failed to save record. Please try again.");
+
+      // Type-safe error handling
+      if (error instanceof Error) {
+        alert(`Failed to save record: ${error.message}. Please try again.`);
+      } else {
+        alert("Failed to save record. Please try again.");
+      }
     } finally {
       setLoading(false);
     }

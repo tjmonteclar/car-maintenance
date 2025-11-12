@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Layout from "../components/layout";
 
 interface Record {
-  id: number;
+  id: string;
   driverName: string;
   carPlate: string;
   carModel: string;
@@ -34,19 +34,31 @@ const Dashboard: React.FC = () => {
     mostServicedCar: "",
   });
 
-  // Fetch records from backend
   useEffect(() => {
     const fetchRecords = async () => {
       try {
-        const response = await fetch("http://localhost:3001/records");
+        const API_URL =
+          process.env.REACT_APP_API_URL ||
+          "https://car-maintenance-backend-fxay.onrender.com";
+        console.log("Fetching records from:", `${API_URL}/records`);
+
+        const response = await fetch(`${API_URL}/records`);
+
         if (!response.ok) {
-          throw new Error("Failed to fetch records");
+          throw new Error(
+            `Failed to fetch records: ${response.status} ${response.statusText}`
+          );
         }
+
         const data = await response.json();
+        console.log("Records fetched:", data);
         setRecords(data);
         calculateStats(data);
       } catch (error) {
         console.error("Error fetching records:", error);
+
+        setRecords([]);
+        calculateStats([]);
       } finally {
         setLoading(false);
       }
@@ -55,7 +67,6 @@ const Dashboard: React.FC = () => {
     fetchRecords();
   }, []);
 
-  // Calculate dashboard statistics
   const calculateStats = (records: Record[]) => {
     const totalRecords = records.length;
 
@@ -66,7 +77,7 @@ const Dashboard: React.FC = () => {
     }, 0);
 
     const totalCost = records.reduce(
-      (total, record) => total + record.totalCost,
+      (total, record) => total + (record.totalCost || 0),
       0
     );
 
@@ -76,10 +87,13 @@ const Dashboard: React.FC = () => {
       carServiceCount[carKey] = (carServiceCount[carKey] || 0) + 1;
     });
 
-    const mostServicedCar = Object.keys(carServiceCount).reduce(
-      (a, b) => (carServiceCount[a] > carServiceCount[b] ? a : b),
-      "No data"
-    );
+    const mostServicedCar =
+      Object.keys(carServiceCount).length > 0
+        ? Object.keys(carServiceCount).reduce(
+            (a, b) => (carServiceCount[a] > carServiceCount[b] ? a : b),
+            Object.keys(carServiceCount)[0]
+          )
+        : "No data";
 
     setStats({
       totalRecords,
@@ -89,7 +103,6 @@ const Dashboard: React.FC = () => {
     });
   };
 
-  // Calculate parts breakdown
   const getPartsBreakdown = () => {
     const breakdown: { [key: string]: number } = {};
 
@@ -106,7 +119,6 @@ const Dashboard: React.FC = () => {
 
   const partsBreakdown = getPartsBreakdown();
 
-  // Calculate cost trend (last 6 months)
   const getCostTrend = () => {
     const last6Months = Array.from({ length: 6 }, (_, i) => {
       const date = new Date();
@@ -116,13 +128,14 @@ const Dashboard: React.FC = () => {
 
     const monthlyCosts = last6Months.map((month) => {
       const monthCost = records
-        .filter(
-          (record) =>
-            new Date(record.date).toLocaleString("default", {
-              month: "short",
-            }) === month
-        )
-        .reduce((sum, record) => sum + record.totalCost, 0);
+        .filter((record) => {
+          if (!record.date) return false;
+          const recordMonth = new Date(record.date).toLocaleString("default", {
+            month: "short",
+          });
+          return recordMonth === month;
+        })
+        .reduce((sum, record) => sum + (record.totalCost || 0), 0);
       return { month, cost: monthCost };
     });
 
@@ -144,7 +157,6 @@ const Dashboard: React.FC = () => {
 
   return (
     <Layout pageTitle="Dashboard">
-      {/* Desktop Header */}
       <div className="text-center hidden lg:block mb-8">
         <h1 className="text-3xl font-bold text-black font-['Tahoma']">
           Maintenance Dashboard
@@ -155,7 +167,6 @@ const Dashboard: React.FC = () => {
       </div>
 
       <div className="space-y-6 lg:space-y-8">
-        {/* Summary Cards with enhanced design */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
           <div className="bg-gradient-to-br from-white to-gray-50 shadow-lg rounded-2xl p-4 lg:p-6 border border-[#7cabfc]/20 hover:shadow-2xl transition-all duration-300 group hover:scale-[1.02]">
             <div className="flex items-center justify-between">
@@ -229,7 +240,7 @@ const Dashboard: React.FC = () => {
                   {stats.mostServicedCar || "No data"}
                 </p>
                 <p className="text-gray-500 text-xs lg:text-sm mt-1">
-                  {stats.mostServicedCar
+                  {stats.mostServicedCar && stats.mostServicedCar !== "No data"
                     ? `${
                         records.filter(
                           (r) => r.carPlate === stats.mostServicedCar
@@ -246,7 +257,6 @@ const Dashboard: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
-          {/* Parts Breakdown */}
           <div className="xl:col-span-1 bg-white shadow-lg rounded-2xl p-6 border border-[#7cabfc]/20">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-xl font-semibold text-gray-900">
@@ -274,7 +284,7 @@ const Dashboard: React.FC = () => {
                             className="bg-gradient-to-r from-[#7cabfc] to-blue-600 h-2 rounded-full transition-all duration-1000 ease-out"
                             style={{
                               width: `${Math.round(
-                                (count / stats.partsReplaced) * 100
+                                (count / Math.max(stats.partsReplaced, 1)) * 100
                               )}%`,
                             }}
                           ></div>
@@ -299,7 +309,6 @@ const Dashboard: React.FC = () => {
             </div>
           </div>
 
-          {/* Cost Trend Chart */}
           <div className="xl:col-span-1 bg-white shadow-lg rounded-2xl p-6 border border-[#7cabfc]/20">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-xl font-semibold text-gray-900">
@@ -332,7 +341,10 @@ const Dashboard: React.FC = () => {
                             item.cost > 0
                               ? `${Math.max(
                                   (item.cost /
-                                    Math.max(...costTrend.map((c) => c.cost))) *
+                                    Math.max(
+                                      ...costTrend.map((c) => c.cost),
+                                      1
+                                    )) *
                                     80,
                                   10
                                 )}px`
@@ -351,7 +363,6 @@ const Dashboard: React.FC = () => {
             </div>
           </div>
 
-          {/* Recent Maintenance Records */}
           <div className="xl:col-span-1 bg-white shadow-lg rounded-2xl p-6 border border-[#7cabfc]/20">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-xl font-semibold text-gray-900">
@@ -390,10 +401,12 @@ const Dashboard: React.FC = () => {
                       </div>
                       <div className="text-right">
                         <p className="font-bold text-gray-900 bg-gradient-to-r from-gray-800 to-[#7cabfc] bg-clip-text text-transparent">
-                          ${record.totalCost.toFixed(2)}
+                          ${(record.totalCost || 0).toFixed(2)}
                         </p>
                         <p className="text-sm text-gray-500">
-                          {new Date(record.date).toLocaleDateString()}
+                          {record.date
+                            ? new Date(record.date).toLocaleDateString()
+                            : "No date"}
                         </p>
                       </div>
                     </div>

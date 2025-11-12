@@ -36,7 +36,6 @@ const Login: React.FC = () => {
     try {
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
-      // FIXED: Use real Render API instead of mock data
       const API_URL =
         process.env.REACT_APP_API_URL ||
         "https://car-maintenance-backend-fxay.onrender.com";
