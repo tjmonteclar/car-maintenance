@@ -157,7 +157,7 @@ const Footer: React.FC = () => {
               ></iframe>
             </div>
             <div className="mt-3 text-sm text-gray-300 font-['Tahoma']">
-              <p className="font-medium text-white">Tj's Office</p>
+              <p className="font-medium text-white">Yousuf's Office</p>
               <p className="mt-1">Dubai, United Arab Emirates</p>
               <p className="mt-2">📞 042629392</p>
               <p>📧 info@superwheels.ae</p>
@@ -173,6 +173,9 @@ const Footer: React.FC = () => {
           <div className="mt-4 md:mt-0 flex space-x-6 text-sm text-gray-400 font-['Tahoma']">
             <span className="hover:text-[#bfa14a] transition-colors duration-200">
               Created by:
+            </span>
+            <span className="hover:text-[#bfa14a] transition-colors duration-200">
+              Yousuf Khan
             </span>
             <span className="hover:text-[#bfa14a] transition-colors duration-200">
               Tj Brandon Monteclar

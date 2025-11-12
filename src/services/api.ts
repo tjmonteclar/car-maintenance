@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:3001';
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://car-maintenance-backend-fxay.onrender.com';
 
 // Generic API error handler
 class APIError extends Error {
@@ -31,7 +31,7 @@ export const recordsAPI = {
   getAll: (): Promise<any[]> => fetchAPI('/records'),
 
   // Get record by ID
-  getById: (id: number): Promise<any> => fetchAPI(`/records/${id}`),
+  getById: (id: string): Promise<any> => fetchAPI(`/records/${id}`),
 
   // Create new record
   create: (record: any): Promise<any> => 
@@ -41,14 +41,14 @@ export const recordsAPI = {
     }),
 
   // Update record
-  update: (id: number, record: any): Promise<any> =>
+  update: (id: string, record: any): Promise<any> =>
     fetchAPI(`/records/${id}`, {
       method: 'PUT',
       body: JSON.stringify(record),
     }),
 
   // Delete record
-  delete: (id: number): Promise<void> =>
+  delete: (id: string): Promise<void> =>
     fetchAPI(`/records/${id}`, {
       method: 'DELETE',
     }),
@@ -57,6 +57,9 @@ export const recordsAPI = {
 // Users API
 export const usersAPI = {
   getAll: (): Promise<any[]> => fetchAPI('/users'),
+  
+  getByEmail: (email: string): Promise<any[]> => fetchAPI(`/users?email=${email}`),
+  
   create: (user: any): Promise<any> => 
     fetchAPI('/users', {
       method: 'POST',
