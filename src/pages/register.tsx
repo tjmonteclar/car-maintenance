@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import LoginLoading from "../components/loading";
+import { mockUsers } from "../mockData";
 
 interface User {
-  id: number;
+  id: string;
   email: string;
   password: string;
   name: string;
@@ -32,7 +33,6 @@ const Register: React.FC = () => {
     setError("");
     setLoading(true);
 
-    // Validation
     if (!formData.name || !formData.email || !formData.password) {
       setError("Please fill in all fields");
       setLoading(false);
@@ -52,28 +52,17 @@ const Register: React.FC = () => {
     }
 
     try {
-      // Add a small delay to show the loading animation
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
-      // Check if user already exists
-      const usersResponse = await fetch("http://localhost:3001/users");
-
-      if (!usersResponse.ok) {
-        throw new Error("Failed to check existing users");
-      }
-
-      const users: User[] = await usersResponse.json();
-
-      const existingUser = users.find((u) => u.email === formData.email);
+      const existingUser = mockUsers.find((u) => u.email === formData.email);
       if (existingUser) {
         setError("User with this email already exists");
         setLoading(false);
         return;
       }
 
-      // Create new user
-      const newUser = {
-        id: Math.floor(Math.random() * 1000000),
+      const newUser: User = {
+        id: Date.now().toString(),
         name: formData.name,
         email: formData.email,
         password: formData.password,
@@ -81,46 +70,28 @@ const Register: React.FC = () => {
 
       console.log("Creating user:", newUser);
 
-      const response = await fetch("http://localhost:3001/users", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newUser),
-      });
+      const existingUsers = JSON.parse(
+        localStorage.getItem("registeredUsers") || "[]"
+      );
+      const updatedUsers = [...existingUsers, newUser];
+      localStorage.setItem("registeredUsers", JSON.stringify(updatedUsers));
 
-      console.log("Response status:", response.status);
+      console.log("User created successfully");
 
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error("Server response:", errorText);
-        throw new Error(`Failed to create account: ${response.status}`);
-      }
-
-      const createdUser = await response.json();
-      console.log("User created:", createdUser);
-
-      // Auto-login after successful registration
       localStorage.setItem("isAuthenticated", "true");
-      localStorage.setItem("userEmail", createdUser.email);
-      localStorage.setItem("userName", createdUser.name);
-      localStorage.setItem("userId", createdUser.id.toString());
+      localStorage.setItem("userEmail", newUser.email);
+      localStorage.setItem("userName", newUser.name);
+      localStorage.setItem("userId", newUser.id);
 
-      // Redirect to dashboard
       navigate("/dashboard");
     } catch (error) {
       console.error("Registration error:", error);
-      setError(
-        `Failed to create account: ${
-          error instanceof Error ? error.message : "Unknown error"
-        }`
-      );
+      setError("Failed to create account. Please try again.");
     } finally {
       setLoading(false);
     }
   };
 
-  // Show loading overlay when loading
   if (loading) {
     return <LoginLoading />;
   }
@@ -136,12 +107,10 @@ const Register: React.FC = () => {
         fontFamily: "Tahoma",
       }}
     >
-      {/* Dark overlay for better readability */}
       <div className="absolute inset-0 bg-black/50"></div>
 
       <div className="relative z-10">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
-          {/* Enhanced Logo/Title with Animation */}
           <div className="flex justify-center mb-2">
             <div className="flex items-center transform hover:scale-105 transition-transform duration-300">
               <div className="relative">

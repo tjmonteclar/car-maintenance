@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import LoginLoading from "../components/loading";
-import Footer from "../components/footer"; // Import the Footer component
+import Footer from "../components/footer";
+import { mockUsers } from "../mockData";
 
 interface User {
-  id: number;
+  id: string;
   email: string;
   password: string;
   name: string;
@@ -18,7 +19,6 @@ const Login: React.FC = () => {
   const [isMounted, setIsMounted] = useState(false);
   const navigate = useNavigate();
 
-  // Trigger animations when component mounts
   useEffect(() => {
     setIsMounted(true);
   }, []);
@@ -28,7 +28,6 @@ const Login: React.FC = () => {
     setError("");
     setLoading(true);
 
-    // Simple validation
     if (!email || !password) {
       setError("Please fill in all fields");
       setLoading(false);
@@ -36,46 +35,30 @@ const Login: React.FC = () => {
     }
 
     try {
-      // Add a small delay to show the loading animation
       await new Promise((resolve) => setTimeout(resolve, 2000));
 
-      // Fetch users from JSON Server
-      const response = await fetch("http://localhost:3001/users");
-
-      if (!response.ok) {
-        throw new Error("Failed to connect to server");
-      }
-
-      const users: User[] = await response.json();
-
-      // Check if user exists
-      const user = users.find(
+      const user = mockUsers.find(
         (u) => u.email === email && u.password === password
       );
 
       if (user) {
-        // Save to localStorage
         localStorage.setItem("isAuthenticated", "true");
         localStorage.setItem("userEmail", user.email);
         localStorage.setItem("userName", user.name);
         localStorage.setItem("userId", user.id.toString());
 
-        // Redirect to dashboard
         navigate("/dashboard");
       } else {
         setError("Invalid email or password");
       }
     } catch (error) {
       console.error("Login error:", error);
-      setError(
-        "Cannot connect to server. Make sure JSON Server is running on port 3001."
-      );
+      setError("Invalid email or password");
     } finally {
       setLoading(false);
     }
   };
 
-  // Show loading overlay when loading
   if (loading) {
     return <LoginLoading />;
   }
@@ -85,9 +68,7 @@ const Login: React.FC = () => {
       className="min-h-screen flex flex-col"
       style={{ fontFamily: "Roboto" }}
     >
-      {/* Main content area */}
       <div className="flex-1 flex">
-        {/* Left Side - Background Image with Animations */}
         <div
           className="hidden lg:flex lg:flex-1 relative"
           style={{
@@ -97,15 +78,12 @@ const Login: React.FC = () => {
             backgroundRepeat: "no-repeat",
           }}
         >
-          {/* Dark overlay for better readability */}
           <div className="absolute inset-0 bg-black/40"></div>
 
-          {/* Content on left side */}
           <div
             className="relative z-10 flex flex-col justify-center items-center text-white p-12 w-full"
             style={{ fontFamily: "Roboto" }}
           >
-            {/* Enhanced Logo/Title with Animation */}
             <div className="flex justify-center mb-6">
               <div
                 className={`flex items-center transform transition-all duration-1000 ${
@@ -125,7 +103,6 @@ const Login: React.FC = () => {
               </div>
             </div>
 
-            {/* Animated Text */}
             <div
               className={`transition-all duration-1000 delay-300 ${
                 isMounted
@@ -141,7 +118,6 @@ const Login: React.FC = () => {
               </p>
             </div>
 
-            {/* Features list with staggered animation */}
             <div className="mt-8 space-y-4 max-w-sm">
               <div
                 className={`flex items-center transition-all duration-700 delay-500 ${
@@ -213,13 +189,11 @@ const Login: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Side - Login Form (No Animations) */}
         <div
           className="flex-1 flex flex-col justify-center py-10 px-6 lg:px-12 relative"
           style={{ fontFamily: "Tahoma" }}
         >
           <div className="relative z-10 mx-auto w-full max-w-md">
-            {/* Mobile Logo - No Animation */}
             <div className="lg:hidden flex justify-center mb-8">
               <div className="flex items-center">
                 <img
@@ -236,7 +210,6 @@ const Login: React.FC = () => {
               </div>
             </div>
 
-            {/* Form Title - No Animation */}
             <div className="text-center lg:text-left mb-8">
               <h2
                 className="text-3xl font-bold text-black"
@@ -246,7 +219,6 @@ const Login: React.FC = () => {
               </h2>
             </div>
 
-            {/* Form Container - No Animation */}
             <div className="bg-white/95 backdrop-blur-sm py-8 px-6 shadow-2xl sm:rounded-2xl border border-white/20">
               <form className="space-y-6" onSubmit={handleSubmit}>
                 {error && (
@@ -368,8 +340,6 @@ const Login: React.FC = () => {
                   </button>
                 </div>
               </form>
-
-              {/* Register Link - No Animation */}
               <div className="mt-6 text-center">
                 <p
                   className="text-sm text-gray-600"
@@ -389,8 +359,6 @@ const Login: React.FC = () => {
           </div>
         </div>
       </div>
-
-      {/* Footer */}
       <Footer />
     </div>
   );

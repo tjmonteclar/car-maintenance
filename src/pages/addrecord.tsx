@@ -161,7 +161,7 @@ const AddRecord: React.FC = () => {
     try {
       const totalCost = calculateTotalCost();
 
-      // Transform parts data for the backend
+      // Transform parts data for storage
       const transformedParts = parts.map((part) => ({
         partType: part.partType,
         replaced: part.replaced,
@@ -174,6 +174,7 @@ const AddRecord: React.FC = () => {
       }));
 
       const recordData = {
+        id: Date.now().toString(), // Generate unique ID
         driverName: formData.driverName,
         carPlate: formData.carPlate,
         carModel: formData.carModel,
@@ -184,17 +185,17 @@ const AddRecord: React.FC = () => {
         parts: transformedParts,
       };
 
-      const response = await fetch("http://localhost:3001/records", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(recordData),
-      });
+      // FIXED: Save to localStorage instead of localhost:3001
+      const existingRecords = JSON.parse(
+        localStorage.getItem("maintenanceRecords") || "[]"
+      );
+      const updatedRecords = [...existingRecords, recordData];
+      localStorage.setItem(
+        "maintenanceRecords",
+        JSON.stringify(updatedRecords)
+      );
 
-      if (!response.ok) {
-        throw new Error("Failed to save record");
-      }
+      console.log("Record saved successfully:", recordData);
 
       // Show success message and redirect
       setTimeout(() => {
