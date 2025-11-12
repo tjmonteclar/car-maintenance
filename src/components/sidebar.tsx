@@ -287,7 +287,7 @@ const Sidebar: React.FC<SidebarProps> = () => {
         <div className="relative">
           <button
             onClick={() => setIsCollapsed(!isCollapsed)}
-            className="hidden lg:flex absolute -right-3 top-6 z-50 w-6 h-6 bg-gradient-to-br from-[#bfa14a] to-amber-600 text-white rounded-full shadow-lg items-center justify-center hover:shadow-xl transition-all duration-300 transform hover:scale-110 border-2 border-white"
+            className="hidden lg:flex absolute -right-3 top-6 z-50 w-6 h-6 bg-gradient-to-br from-[#7cabfc] to-blue-600 text-white rounded-full shadow-lg items-center justify-center hover:shadow-xl transition-all duration-300 transform hover:scale-110 border-2 border-white"
           >
             <svg
               className={`w-3 h-3 transition-transform duration-300 ${
@@ -307,10 +307,10 @@ const Sidebar: React.FC<SidebarProps> = () => {
           </button>
 
           {!isCollapsed && (
-            <div className="p-6 border-b border-white/40 bg-gradient-to-r from-white/50 to-amber-50/30 backdrop-blur-sm">
+            <div className="p-6 border-b border-white/40 bg-gradient-to-r from-white/50 to-blue-50/30 backdrop-blur-sm">
               <div className="flex items-center space-x-3">
                 <div className="relative">
-                  <div className="w-12 h-12 bg-gradient-to-br from-[#bfa14a] to-amber-600 rounded-2xl flex items-center justify-center shadow-lg">
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#7cabfc] to-blue-600 rounded-2xl flex items-center justify-center shadow-lg">
                     <span className="text-white font-bold text-lg">
                       {userInitial}
                     </span>
@@ -334,7 +334,7 @@ const Sidebar: React.FC<SidebarProps> = () => {
           {isCollapsed && (
             <div className="p-4 border-b border-white/40 flex justify-center">
               <div className="relative group">
-                <div className="w-10 h-10 bg-gradient-to-br from-[#bfa14a] to-amber-600 rounded-xl flex items-center justify-center shadow-lg">
+                <div className="w-10 h-10 bg-gradient-to-br from-[#7cabfc] to-blue-600 rounded-xl flex items-center justify-center shadow-lg">
                   <span className="text-white font-bold text-sm">
                     {userInitial}
                   </span>
@@ -376,7 +376,7 @@ const Sidebar: React.FC<SidebarProps> = () => {
                 {/* Drop indicator above - only show when dragging over this item with 'above' position */}
                 {isDragOver && dropPosition === "above" && (
                   <div className="relative mb-2">
-                    <div className="w-full h-1 bg-amber-400 rounded-full shadow-sm"></div>
+                    <div className="w-full h-1 bg-blue-400 rounded-full shadow-sm"></div>
                   </div>
                 )}
 
@@ -388,14 +388,14 @@ const Sidebar: React.FC<SidebarProps> = () => {
                     backdrop-blur-sm border
                     ${
                       isActive
-                        ? "bg-gradient-to-r from-amber-50 to-amber-100/50 text-amber-700 border-amber-200/80 shadow-lg"
+                        ? "bg-gradient-to-r from-blue-50 to-blue-100/50 text-blue-700 border-blue-200/80 shadow-lg"
                         : "text-gray-700 hover:bg-white/80 hover:shadow-md hover:border-white/50 border-transparent"
                     } ${
                       isCollapsed ? "justify-center p-4" : "space-x-4 px-4 py-3"
                     }
                     ${
                       isDragOver && !isDragging
-                        ? "bg-amber-50/50 border-amber-200/50"
+                        ? "bg-blue-50/50 border-blue-200/50"
                         : ""
                     }`
                   }
@@ -438,7 +438,7 @@ const Sidebar: React.FC<SidebarProps> = () => {
                 {/* Drop indicator below - only show when dragging over this item with 'below' position */}
                 {isDragOver && dropPosition === "below" && (
                   <div className="relative mt-2">
-                    <div className="w-full h-1 bg-amber-400 rounded-full shadow-sm"></div>
+                    <div className="w-full h-1 bg-blue-400 rounded-full shadow-sm"></div>
                   </div>
                 )}
               </div>
@@ -448,10 +448,10 @@ const Sidebar: React.FC<SidebarProps> = () => {
           {!isCollapsed && (
             <div className="relative my-6">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-amber-200/50"></div>
+                <div className="w-full border-t border-blue-200/50"></div>
               </div>
               <div className="relative flex justify-center">
-                <span className="px-3 text-xs font-semibold text-amber-600 backdrop-blur-sm rounded-full">
+                <span className="px-3 text-xs font-semibold text-blue-600 backdrop-blur-sm rounded-full">
                   Profile
                 </span>
               </div>
@@ -460,7 +460,7 @@ const Sidebar: React.FC<SidebarProps> = () => {
 
           <div className="mb-4">
             {!isCollapsed && (
-              <h3 className="text-xs font-semibold text-amber-600 uppercase tracking-wider mb-4 px-3 backdrop-blur-sm py-2 rounded-xl">
+              <h3 className="text-xs font-semibold text-blue-600 uppercase tracking-wider mb-4 px-3 backdrop-blur-sm py-2 rounded-xl">
                 Profile
               </h3>
             )}
@@ -474,7 +474,7 @@ const Sidebar: React.FC<SidebarProps> = () => {
                   backdrop-blur-sm border
                   ${
                     isActive
-                      ? "bg-gradient-to-r from-amber-50 to-amber-100/50 text-amber-700 border-amber-200/80 shadow-lg"
+                      ? "bg-gradient-to-r from-blue-50 to-blue-100/50 text-blue-700 border-blue-200/80 shadow-lg"
                       : "text-gray-700 hover:bg-white/80 hover:shadow-md hover:border-white/50 border-transparent"
                   } ${
                     isCollapsed ? "justify-center p-4" : "space-x-4 px-4 py-3"
@@ -520,7 +520,7 @@ const Sidebar: React.FC<SidebarProps> = () => {
         {!isCollapsed && (
           <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-white/40 bg-white/50 backdrop-blur-sm">
             <div className="text-center">
-              <div className="w-8 h-8 bg-gradient-to-br from-[#bfa14a] to-amber-600 rounded-lg flex items-center justify-center mx-auto mb-2 shadow-md">
+              <div className="w-8 h-8 bg-gradient-to-br from-[#7cabfc] to-blue-600 rounded-lg flex items-center justify-center mx-auto mb-2 shadow-md">
                 <span className="text-white text-sm">🚗</span>
               </div>
               <p className="text-xs text-gray-600 font-medium">

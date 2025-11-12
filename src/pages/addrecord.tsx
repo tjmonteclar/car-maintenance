@@ -230,24 +230,24 @@ const AddRecord: React.FC = () => {
         </div>
 
         {/* Main Form Container */}
-        <div className="bg-white shadow-2xl rounded-3xl overflow-hidden border border-[#bfa14a]/20">
+        <div className="bg-white shadow-2xl rounded-3xl overflow-hidden border border-[#7cabfc]/20">
           {/* Progress Steps */}
-          <div className="bg-gradient-to-r from-gray-50 to-amber-50 px-8 py-6 border-b border-gray-200">
+          <div className="bg-gradient-to-r from-gray-50 to-blue-50 px-8 py-6 border-b border-gray-200">
             <div className="flex items-center justify-center space-x-8">
               <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 bg-[#bfa14a] text-white rounded-full flex items-center justify-center font-semibold text-sm">
+                <div className="w-8 h-8 bg-[#7cabfc] text-white rounded-full flex items-center justify-center font-semibold text-sm">
                   1
                 </div>
                 <span className="font-semibold text-gray-900">
                   Vehicle Info
                 </span>
               </div>
-              <div className="w-12 h-0.5 bg-[#bfa14a]"></div>
+              <div className="w-12 h-0.5 bg-[#7cabfc]"></div>
               <div className="flex items-center space-x-3">
                 <div
                   className={`w-8 h-8 rounded-full flex items-center justify-center font-semibold text-sm ${
                     parts.length > 0
-                      ? "bg-[#bfa14a] text-white"
+                      ? "bg-[#7cabfc] text-white"
                       : "bg-gray-200 text-gray-500"
                   }`}
                 >
@@ -266,7 +266,7 @@ const AddRecord: React.FC = () => {
                 <div
                   className={`w-8 h-8 rounded-full flex items-center justify-center font-semibold text-sm ${
                     isFormValid
-                      ? "bg-[#bfa14a] text-white"
+                      ? "bg-[#7cabfc] text-white"
                       : "bg-gray-200 text-gray-500"
                   }`}
                 >
@@ -287,7 +287,7 @@ const AddRecord: React.FC = () => {
             {/* Driver & Vehicle Information Section */}
             <div className="p-8 border-b border-gray-200/60">
               <div className="flex items-center space-x-4 mb-8">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#bfa14a] to-amber-600 rounded-xl flex items-center justify-center shadow-lg">
+                <div className="w-12 h-12 bg-gradient-to-br from-[#7cabfc] to-blue-600 rounded-xl flex items-center justify-center shadow-lg">
                   <svg
                     className="w-6 h-6 text-white"
                     fill="none"
@@ -321,7 +321,7 @@ const AddRecord: React.FC = () => {
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                       <svg
-                        className="h-5 w-5 text-gray-400 group-focus-within:text-[#bfa14a]"
+                        className="h-5 w-5 text-gray-400 group-focus-within:text-[#7cabfc]"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -340,7 +340,7 @@ const AddRecord: React.FC = () => {
                       value={formData.driverName}
                       onChange={handleInputChange}
                       placeholder="Enter driver full name"
-                      className={`w-full pl-10 pr-4 py-4 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#bfa14a] focus:border-[#bfa14a] transition-all duration-300 group-hover:border-gray-300 ${
+                      className={`w-full pl-10 pr-4 py-4 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#7cabfc] focus:border-[#7cabfc] transition-all duration-300 group-hover:border-gray-300 ${
                         errors.driverName ? "border-red-500" : "border-gray-200"
                       }`}
                       required
@@ -363,7 +363,7 @@ const AddRecord: React.FC = () => {
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                       <svg
-                        className="h-5 w-5 text-gray-400 group-focus-within:text-[#bfa14a]"
+                        className="h-5 w-5 text-gray-400 group-focus-within:text-[#7cabfc]"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -382,7 +382,7 @@ const AddRecord: React.FC = () => {
                       value={formData.carPlate}
                       onChange={handleInputChange}
                       placeholder="e.g., ABC-1234"
-                      className={`w-full pl-10 pr-4 py-4 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#bfa14a] focus:border-[#bfa14a] transition-all duration-300 group-hover:border-gray-300 ${
+                      className={`w-full pl-10 pr-4 py-4 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#7cabfc] focus:border-[#7cabfc] transition-all duration-300 group-hover:border-gray-300 ${
                         errors.carPlate ? "border-red-500" : "border-gray-200"
                       }`}
                       required
@@ -405,7 +405,7 @@ const AddRecord: React.FC = () => {
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                       <svg
-                        className="h-5 w-5 text-gray-400 group-focus-within:text-[#bfa14a]"
+                        className="h-5 w-5 text-gray-400 group-focus-within:text-[#7cabfc]"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -424,7 +424,7 @@ const AddRecord: React.FC = () => {
                       value={formData.carModel}
                       onChange={handleInputChange}
                       placeholder="e.g., Toyota Camry 2023"
-                      className={`w-full pl-10 pr-4 py-4 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#bfa14a] focus:border-[#bfa14a] transition-all duration-300 group-hover:border-gray-300 ${
+                      className={`w-full pl-10 pr-4 py-4 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#7cabfc] focus:border-[#7cabfc] transition-all duration-300 group-hover:border-gray-300 ${
                         errors.carModel ? "border-red-500" : "border-gray-200"
                       }`}
                       required
@@ -444,7 +444,7 @@ const AddRecord: React.FC = () => {
             {/* Parts Information Section */}
             <div className="p-8">
               <div className="flex items-center space-x-4 mb-8">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#bfa14a] to-amber-600 rounded-xl flex items-center justify-center shadow-lg">
+                <div className="w-12 h-12 bg-gradient-to-br from-[#7cabfc] to-blue-600 rounded-xl flex items-center justify-center shadow-lg">
                   <svg
                     className="w-6 h-6 text-white"
                     fill="none"
@@ -500,9 +500,9 @@ const AddRecord: React.FC = () => {
               )}
 
               {/* Add Part Form */}
-              <div className="bg-gradient-to-br from-gray-50 to-amber-50/50 p-8 rounded-2xl mb-8 border-2 border-dashed border-[#bfa14a]/40">
+              <div className="bg-gradient-to-br from-gray-50 to-blue-50/50 p-8 rounded-2xl mb-8 border-2 border-dashed border-[#7cabfc]/40">
                 <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
-                  <span className="w-2 h-6 bg-[#bfa14a] rounded-full mr-3"></span>
+                  <span className="w-2 h-6 bg-[#7cabfc] rounded-full mr-3"></span>
                   Add New Part
                 </h3>
 
@@ -516,7 +516,7 @@ const AddRecord: React.FC = () => {
                       name="partType"
                       value={formData.partType}
                       onChange={handleInputChange}
-                      className={`w-full px-4 py-4 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#bfa14a] focus:border-[#bfa14a] transition-all duration-300 group-hover:border-gray-300 ${
+                      className={`w-full px-4 py-4 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#7cabfc] focus:border-[#7cabfc] transition-all duration-300 group-hover:border-gray-300 ${
                         errors.partType ? "border-red-500" : "border-gray-200"
                       }`}
                       disabled={loading}
@@ -546,7 +546,7 @@ const AddRecord: React.FC = () => {
                       name="partReplaced"
                       value={formData.partReplaced}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#bfa14a] focus:border-[#bfa14a] transition-all duration-300 group-hover:border-gray-300"
+                      className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#7cabfc] focus:border-[#7cabfc] transition-all duration-300 group-hover:border-gray-300"
                       disabled={loading}
                     >
                       <option value="No">No</option>
@@ -565,7 +565,7 @@ const AddRecord: React.FC = () => {
                       value={formData.partBrand}
                       onChange={handleInputChange}
                       placeholder="e.g., Bosch, Michelin"
-                      className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#bfa14a] focus:border-[#bfa14a] transition-all duration-300 group-hover:border-gray-300"
+                      className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#7cabfc] focus:border-[#7cabfc] transition-all duration-300 group-hover:border-gray-300"
                       disabled={loading}
                     />
                   </div>
@@ -581,7 +581,7 @@ const AddRecord: React.FC = () => {
                       value={formData.supplier}
                       onChange={handleInputChange}
                       placeholder="Supplier name"
-                      className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#bfa14a] focus:border-[#bfa14a] transition-all duration-300 group-hover:border-gray-300"
+                      className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#7cabfc] focus:border-[#7cabfc] transition-all duration-300 group-hover:border-gray-300"
                       disabled={loading}
                     />
                   </div>
@@ -599,7 +599,7 @@ const AddRecord: React.FC = () => {
                       name="manufactureDate"
                       value={formData.manufactureDate}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#bfa14a] focus:border-[#bfa14a] transition-all duration-300 group-hover:border-gray-300"
+                      className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#7cabfc] focus:border-[#7cabfc] transition-all duration-300 group-hover:border-gray-300"
                       disabled={loading}
                     />
                   </div>
@@ -614,7 +614,7 @@ const AddRecord: React.FC = () => {
                       name="expiryDate"
                       value={formData.expiryDate}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#bfa14a] focus:border-[#bfa14a] transition-all duration-300 group-hover:border-gray-300"
+                      className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#7cabfc] focus:border-[#7cabfc] transition-all duration-300 group-hover:border-gray-300"
                       disabled={loading}
                     />
                   </div>
@@ -629,7 +629,7 @@ const AddRecord: React.FC = () => {
                       name="partChangeDate"
                       value={formData.partChangeDate}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#bfa14a] focus:border-[#bfa14a] transition-all duration-300 group-hover:border-gray-300"
+                      className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#7cabfc] focus:border-[#7cabfc] transition-all duration-300 group-hover:border-gray-300"
                       disabled={loading}
                     />
                   </div>
@@ -646,7 +646,7 @@ const AddRecord: React.FC = () => {
                       onChange={handleInputChange}
                       step="0.01"
                       min="0"
-                      className={`w-full px-4 py-4 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#bfa14a] focus:border-[#bfa14a] transition-all duration-300 group-hover:border-gray-300 ${
+                      className={`w-full px-4 py-4 border-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#7cabfc] focus:border-[#7cabfc] transition-all duration-300 group-hover:border-gray-300 ${
                         errors.partCost ? "border-red-500" : "border-gray-200"
                       }`}
                       disabled={loading}
@@ -663,7 +663,7 @@ const AddRecord: React.FC = () => {
                   type="button"
                   onClick={addPart}
                   disabled={loading || !formData.partType}
-                  className="px-8 py-4 bg-gradient-to-r from-[#bfa14a] to-amber-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#bfa14a] focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none transition-all duration-200 flex items-center space-x-3"
+                  className="px-8 py-4 bg-gradient-to-r from-[#7cabfc] to-blue-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#7cabfc] focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none transition-all duration-200 flex items-center space-x-3"
                 >
                   <svg
                     className="w-5 h-5 text-white"
@@ -687,10 +687,10 @@ const AddRecord: React.FC = () => {
                 <div className="mb-6">
                   <div className="flex items-center justify-between mb-6">
                     <h3 className="text-xl font-bold text-gray-900 flex items-center">
-                      <span className="w-2 h-6 bg-[#bfa14a] rounded-full mr-3"></span>
+                      <span className="w-2 h-6 bg-[#7cabfc] rounded-full mr-3"></span>
                       Added Parts ({parts.length})
                     </h3>
-                    <div className="text-2xl font-bold bg-gradient-to-r from-[#bfa14a] to-amber-600 bg-clip-text text-transparent">
+                    <div className="text-2xl font-bold bg-gradient-to-r from-[#7cabfc] to-blue-600 bg-clip-text text-transparent">
                       Total: ${calculateTotalCost().toFixed(2)}
                     </div>
                   </div>
@@ -698,7 +698,7 @@ const AddRecord: React.FC = () => {
                     {parts.map((part, index) => (
                       <div
                         key={index}
-                        className="bg-gradient-to-r from-white to-amber-50/50 p-6 rounded-2xl border border-[#bfa14a]/20 shadow-sm hover:shadow-lg transition-all duration-300 group"
+                        className="bg-gradient-to-r from-white to-blue-50/50 p-6 rounded-2xl border border-[#7cabfc]/20 shadow-sm hover:shadow-lg transition-all duration-300 group"
                       >
                         <div className="flex items-start justify-between">
                           <div className="flex-1">
@@ -718,7 +718,7 @@ const AddRecord: React.FC = () => {
                                   {part.replaced}
                                 </span>
                               </div>
-                              <span className="font-bold text-[#bfa14a] text-xl">
+                              <span className="font-bold text-[#7cabfc] text-xl">
                                 ${part.partCost}
                               </span>
                             </div>
@@ -786,7 +786,7 @@ const AddRecord: React.FC = () => {
             </div>
 
             {/* Submit Button */}
-            <div className="px-8 py-8 bg-gradient-to-r from-gray-50 to-amber-50/30 border-t border-gray-200/60">
+            <div className="px-8 py-8 bg-gradient-to-r from-gray-50 to-blue-50/30 border-t border-gray-200/60">
               <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0">
                 <div className="text-center lg:text-left">
                   <p className="text-gray-600 mb-1">
@@ -795,7 +795,7 @@ const AddRecord: React.FC = () => {
                   </p>
                   <p
                     className={`text-sm font-medium ${
-                      isFormValid ? "text-green-600" : "text-amber-600"
+                      isFormValid ? "text-green-600" : "text-blue-600"
                     }`}
                   >
                     {isFormValid
@@ -806,7 +806,7 @@ const AddRecord: React.FC = () => {
                 <button
                   type="submit"
                   disabled={loading || !isFormValid}
-                  className="px-12 py-4 bg-gradient-to-r from-[#bfa14a] to-amber-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#bfa14a] focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none transition-all duration-200 flex items-center justify-center space-x-3 min-w-64"
+                  className="px-12 py-4 bg-gradient-to-r from-[#7cabfc] to-blue-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#7cabfc] focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none transition-all duration-200 flex items-center justify-center space-x-3 min-w-64"
                 >
                   {loading ? (
                     <>

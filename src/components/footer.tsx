@@ -28,10 +28,10 @@ const Footer: React.FC = () => {
               </div>
               <div>
                 <h3 className="text-lg font-bold text-white font-['Tahoma']">
-                  Expense Car Maintenance System
+                  Expense Management System
                 </h3>
                 <p className="text-sm text-gray-300 font-['Tahoma']">
-                  Management System
+                  Car Maintenance
                 </p>
               </div>
             </div>
@@ -157,9 +157,7 @@ const Footer: React.FC = () => {
               ></iframe>
             </div>
             <div className="mt-3 text-sm text-gray-300 font-['Tahoma']">
-              <p className="font-medium text-white">
-                Super Wheels Luxury Transport
-              </p>
+              <p className="font-medium text-white">Tj's Office</p>
               <p className="mt-1">Dubai, United Arab Emirates</p>
               <p className="mt-2">📞 042629392</p>
               <p>📧 info@superwheels.ae</p>
@@ -178,9 +176,6 @@ const Footer: React.FC = () => {
             </span>
             <span className="hover:text-[#bfa14a] transition-colors duration-200">
               Tj Brandon Monteclar
-            </span>
-            <span className="hover:text-[#bfa14a] transition-colors duration-200">
-              Yousuf Khan
             </span>
           </div>
         </div>

@@ -150,23 +150,16 @@ const Register: React.FC = () => {
                   alt="Car Maintenance Tracker"
                   className="h-16 w-16 rounded-xl shadow-lg bg-white/20 backdrop-blur-sm p-2"
                 />
-                <div className="absolute -inset-1 bg-[#bfa14a] rounded-xl opacity-20 blur-sm"></div>
+                <div className="absolute -inset-1 bg-[#7cabfc] rounded-xl opacity-20 blur-sm"></div>
               </div>
               <h1
                 className="ml-4 text-3xl font-bold text-white"
                 style={{ fontFamily: "Tahoma" }}
               >
-                SUPER WHEELS
+                Create Your Account
               </h1>
             </div>
           </div>
-
-          <h2
-            className="text-center text-3xl font-extrabold text-white"
-            style={{ fontFamily: "Tahoma" }}
-          >
-            Create Your Account
-          </h2>
           <p
             className="mt-2 text-center text-sm text-white/80"
             style={{ fontFamily: "Tahoma" }}
@@ -204,7 +197,7 @@ const Register: React.FC = () => {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#bfa14a] focus:border-transparent transition-all duration-200 bg-white"
+                    className="block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#7cabfc] focus:border-transparent transition-all duration-200 bg-white"
                     placeholder="Enter your full name"
                     style={{ fontFamily: "Tahoma" }}
                   />
@@ -231,7 +224,7 @@ const Register: React.FC = () => {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#bfa14a] focus:border-transparent transition-all duration-200 bg-white"
+                    className="block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#7cabfc] focus:border-transparent transition-all duration-200 bg-white"
                     placeholder="Enter your email"
                     style={{ fontFamily: "Tahoma" }}
                   />
@@ -258,7 +251,7 @@ const Register: React.FC = () => {
                     required
                     value={formData.password}
                     onChange={handleChange}
-                    className="block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#bfa14a] focus:border-transparent transition-all duration-200 bg-white"
+                    className="block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#7cabfc] focus:border-transparent transition-all duration-200 bg-white"
                     placeholder="Enter your password"
                     style={{ fontFamily: "Tahoma" }}
                   />
@@ -291,7 +284,7 @@ const Register: React.FC = () => {
                     required
                     value={formData.confirmPassword}
                     onChange={handleChange}
-                    className="block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#bfa14a] focus:border-transparent transition-all duration-200 bg-white"
+                    className="block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#7cabfc] focus:border-transparent transition-all duration-200 bg-white"
                     placeholder="Confirm your password"
                     style={{ fontFamily: "Tahoma" }}
                   />
@@ -304,7 +297,7 @@ const Register: React.FC = () => {
               <div>
                 <button
                   type="submit"
-                  className="group w-full flex justify-center py-3 px-4 border border-transparent rounded-xl shadow-lg text-sm font-medium text-white bg-gradient-to-r from-[#bfa14a] to-amber-600 hover:from-amber-600 hover:to-[#bfa14a] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#bfa14a] transform hover:scale-[1.02] transition-all duration-200"
+                  className="group w-full flex justify-center py-3 px-4 border border-transparent rounded-xl shadow-lg text-sm font-medium text-white bg-gradient-to-r from-[#7cabfc] to-blue-600 hover:from-blue-600 hover:to-[#7cabfc] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#7cabfc] transform hover:scale-[1.02] transition-all duration-200"
                   style={{ fontFamily: "Tahoma" }}
                 >
                   <span
@@ -337,7 +330,7 @@ const Register: React.FC = () => {
                   Already have an account?{" "}
                   <Link
                     to="/login"
-                    className="font-medium text-gray-600 hover:text-[#bfa14a] transition-colors duration-200"
+                    className="font-medium text-gray-600 hover:text-[#7cabfc] transition-colors duration-200"
                     style={{ fontFamily: "Tahoma" }}
                   >
                     Sign in here

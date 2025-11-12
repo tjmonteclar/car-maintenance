@@ -5,10 +5,10 @@ const LoginLoading: React.FC = () => {
     <div className="fixed inset-0 bg-gradient-to-br from-blue-50 to-indigo-100 flex flex-col items-center justify-center z-50">
       {/* Animated Car Icon with Pulse Effect */}
       <div className="relative mb-8">
-        <div className="w-20 h-20 bg-[#bfa14a] rounded-xl flex items-center justify-center text-white text-3xl animate-pulse shadow-lg">
+        <div className="w-20 h-20 bg-[#7cabfc] rounded-xl flex items-center justify-center text-white text-3xl animate-pulse shadow-lg">
           🚗
         </div>
-        <div className="absolute inset-0 border-4 border-[#bfa14a] rounded-xl animate-ping opacity-75"></div>
+        <div className="absolute inset-0 border-4 border-[#7cabfc] rounded-xl animate-ping opacity-75"></div>
       </div>
 
       {/* Text with Typing Animation */}
@@ -23,7 +23,7 @@ const LoginLoading: React.FC = () => {
           {[1, 2, 3, 4, 5].map((bar) => (
             <div
               key={bar}
-              className="w-1.5 h-6 bg-[#bfa14a] rounded-full animate-bounce"
+              className="w-1.5 h-6 bg-[#7cabfc] rounded-full animate-bounce"
               style={{
                 animationDelay: `${bar * 0.1}s`,
                 animationDuration: "0.6s",
@@ -35,7 +35,7 @@ const LoginLoading: React.FC = () => {
 
       {/* Progress Bar */}
       <div className="w-64 h-1 bg-gray-200 rounded-full mt-8 overflow-hidden">
-        <div className="h-full bg-[#bfa14a] rounded-full animate-progress"></div>
+        <div className="h-full bg-[#7cabfc] rounded-full animate-progress"></div>
       </div>
     </div>
   );

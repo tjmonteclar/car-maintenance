@@ -83,7 +83,7 @@ const Navbar: React.FC = () => {
 
   return (
     <nav
-      className={`sticky top-0 z-50 p-4 bg-gradient-to-r from-[#bfa14a] to-amber-600 shadow-lg transition-all duration-300 ${
+      className={`sticky top-0 z-50 p-4 bg-gradient-to-r from-[#7cabfc] to-blue-600 shadow-lg transition-all duration-300 ${
         isScrolled ? "shadow-xl py-3" : "py-4"
       }`}
     >
@@ -99,7 +99,7 @@ const Navbar: React.FC = () => {
             </div>
             <div className="text-left">
               <h1 className="text-xl font-bold text-white drop-shadow-sm">
-                Car Maintenance Records
+                Expense Management System
               </h1>
               <p className="text-sm text-white/90 mt-1 font-medium">
                 Track and manage vehicle maintenance history
@@ -115,7 +115,7 @@ const Navbar: React.FC = () => {
                 className={({ isActive }) =>
                   `px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
                     isActive
-                      ? "bg-white text-amber-700 shadow-lg"
+                      ? "bg-white text-blue-700 shadow-lg"
                       : "text-white hover:bg-white/30 hover:text-white"
                   }`
                 }
@@ -128,7 +128,7 @@ const Navbar: React.FC = () => {
                 className={({ isActive }) =>
                   `px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
                     isActive
-                      ? "bg-white text-amber-700 shadow-lg"
+                      ? "bg-white text-blue-700 shadow-lg"
                       : "text-white hover:bg-white/30 hover:text-white"
                   }`
                 }
@@ -146,19 +146,19 @@ const Navbar: React.FC = () => {
             <div className="relative">
               <button
                 onClick={toggleDropdown}
-                className="relative w-12 h-12 bg-gradient-to-br from-gray-700 to-gray-900 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-amber-500 group"
+                className="relative w-12 h-12 bg-gradient-to-br from-gray-700 to-gray-900 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-500 group"
               >
                 <span className="text-white font-bold text-lg group-hover:scale-110 transition-transform duration-300">
                   {userName.charAt(0).toUpperCase()}
                 </span>
-                <div className="absolute -inset-1 bg-gradient-to-r from-amber-400 to-amber-600 rounded-full opacity-0 group-hover:opacity-100 blur transition duration-300 group-hover:duration-1000"></div>
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-400 to-blue-600 rounded-full opacity-0 group-hover:opacity-100 blur transition duration-300 group-hover:duration-1000"></div>
               </button>
 
               {isDropdownOpen && (
                 <div className="absolute right-0 mt-3 w-64 bg-white rounded-2xl shadow-2xl border border-gray-200/50 backdrop-blur-sm overflow-hidden z-50 animate-in slide-in-from-top-5 duration-300">
-                  <div className="px-6 py-4 bg-gradient-to-r from-gray-50 to-amber-50 border-b border-gray-200/50">
+                  <div className="px-6 py-4 bg-gradient-to-r from-gray-50 to-blue-50 border-b border-gray-200/50">
                     <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-gradient-to-br from-[#bfa14a] to-amber-600 rounded-full flex items-center justify-center shadow-md">
+                      <div className="w-10 h-10 bg-gradient-to-br from-[#7cabfc] to-blue-600 rounded-full flex items-center justify-center shadow-md">
                         <span className="text-white font-semibold text-sm">
                           {userName.charAt(0).toUpperCase()}
                         </span>
@@ -181,13 +181,13 @@ const Navbar: React.FC = () => {
                       className={({ isActive }) =>
                         `flex items-center px-4 py-3 text-sm rounded-xl transition-all duration-300 mb-1 ${
                           isActive
-                            ? "bg-gradient-to-r from-amber-50 to-amber-100 text-amber-700 border-l-4 border-amber-500 shadow-sm"
+                            ? "bg-gradient-to-r from-blue-50 to-blue-100 text-blue-700 border-l-4 border-blue-500 shadow-sm"
                             : "text-gray-700 hover:bg-gray-100 hover:translate-x-1"
                         }`
                       }
                     >
                       <svg
-                        className="w-5 h-5 mr-3 text-amber-600"
+                        className="w-5 h-5 mr-3 text-blue-600"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -208,13 +208,13 @@ const Navbar: React.FC = () => {
                       className={({ isActive }) =>
                         `flex items-center px-4 py-3 text-sm rounded-xl transition-all duration-300 mb-1 ${
                           isActive
-                            ? "bg-gradient-to-r from-amber-50 to-amber-100 text-amber-700 border-l-4 border-amber-500 shadow-sm"
+                            ? "bg-gradient-to-r from-blue-50 to-blue-100 text-blue-700 border-l-4 border-blue-500 shadow-sm"
                             : "text-gray-700 hover:bg-gray-100 hover:translate-x-1"
                         }`
                       }
                     >
                       <svg
-                        className="w-5 h-5 mr-3 text-amber-600"
+                        className="w-5 h-5 mr-3 text-blue-600"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -235,13 +235,13 @@ const Navbar: React.FC = () => {
                       className={({ isActive }) =>
                         `flex items-center px-4 py-3 text-sm rounded-xl transition-all duration-300 mb-1 ${
                           isActive
-                            ? "bg-gradient-to-r from-amber-50 to-amber-100 text-amber-700 border-l-4 border-amber-500 shadow-sm"
+                            ? "bg-gradient-to-r from-blue-50 to-blue-100 text-blue-700 border-l-4 border-blue-500 shadow-sm"
                             : "text-gray-700 hover:bg-gray-100 hover:translate-x-1"
                         }`
                       }
                     >
                       <svg
-                        className="w-5 h-5 mr-3 text-amber-600"
+                        className="w-5 h-5 mr-3 text-blue-600"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -262,13 +262,13 @@ const Navbar: React.FC = () => {
                       className={({ isActive }) =>
                         `flex items-center px-4 py-3 text-sm rounded-xl transition-all duration-300 ${
                           isActive
-                            ? "bg-gradient-to-r from-amber-50 to-amber-100 text-amber-700 border-l-4 border-amber-500 shadow-sm"
+                            ? "bg-gradient-to-r from-blue-50 to-blue-100 text-blue-700 border-l-4 border-blue-500 shadow-sm"
                             : "text-gray-700 hover:bg-gray-100 hover:translate-x-1"
                         }`
                       }
                     >
                       <svg
-                        className="w-5 h-5 mr-3 text-amber-600"
+                        className="w-5 h-5 mr-3 text-blue-600"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"

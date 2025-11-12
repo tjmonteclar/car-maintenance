@@ -28,7 +28,7 @@ const Layout: React.FC<LayoutProps> = ({
           <div className="flex items-center justify-between">
             <button
               onClick={handleOpenSidebar}
-              className="w-10 h-10 bg-[#bfa14a] text-white rounded-lg shadow flex items-center justify-center hover:bg-[#a58c3b] transition-colors"
+              className="w-10 h-10 bg-[#7cabfc] text-white rounded-lg shadow flex items-center justify-center hover:bg-[#5a8de8] transition-colors"
             >
               <svg
                 className="w-5 h-5"

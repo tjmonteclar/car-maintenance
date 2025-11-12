@@ -120,7 +120,7 @@ const Login: React.FC = () => {
                     alt="Car Maintenance Tracker"
                     className="w-80 rounded-xl shadow-lg bg-white/20 p-2 hover:scale-105 transition-transform duration-300"
                   />
-                  <div className="absolute -inset-1 bg-[#bfa14a] rounded-xl opacity-20"></div>
+                  <div className="absolute -inset-1 bg-[#7cabfc] rounded-xl opacity-20"></div>
                 </div>
               </div>
             </div>
@@ -150,7 +150,7 @@ const Login: React.FC = () => {
                     : "opacity-0 -translate-x-8"
                 }`}
               >
-                <div className="w-8 h-8 bg-[#bfa14a] rounded-full flex items-center justify-center mr-3">
+                <div className="w-8 h-8 bg-[#7cabfc] rounded-full flex items-center justify-center mr-3">
                   <span
                     className="text-white text-sm"
                     style={{ fontFamily: "Tahoma" }}
@@ -172,7 +172,7 @@ const Login: React.FC = () => {
                     : "opacity-0 -translate-x-8"
                 }`}
               >
-                <div className="w-8 h-8 bg-[#bfa14a] rounded-full flex items-center justify-center mr-3">
+                <div className="w-8 h-8 bg-[#7cabfc] rounded-full flex items-center justify-center mr-3">
                   <span
                     className="text-white text-sm"
                     style={{ fontFamily: "Tahoma" }}
@@ -194,7 +194,7 @@ const Login: React.FC = () => {
                     : "opacity-0 -translate-x-8"
                 }`}
               >
-                <div className="w-8 h-8 bg-[#bfa14a] rounded-full flex items-center justify-center mr-3">
+                <div className="w-8 h-8 bg-[#7cabfc] rounded-full flex items-center justify-center mr-3">
                   <span
                     className="text-white text-sm"
                     style={{ fontFamily: "Tahoma" }}
@@ -275,7 +275,7 @@ const Login: React.FC = () => {
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#bfa14a] focus:border-transparent transition-all duration-200 bg-white"
+                      className="block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#7cabfc] focus:border-transparent transition-all duration-200 bg-white"
                       placeholder="Enter your email"
                       style={{ fontFamily: "Tahoma" }}
                     />
@@ -302,7 +302,7 @@ const Login: React.FC = () => {
                       required
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      className="block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#bfa14a] focus:border-transparent transition-all duration-200 bg-white"
+                      className="block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#7cabfc] focus:border-transparent transition-all duration-200 bg-white"
                       placeholder="Enter your password"
                       style={{ fontFamily: "Tahoma" }}
                     />
@@ -318,7 +318,7 @@ const Login: React.FC = () => {
                       id="remember-me"
                       name="remember-me"
                       type="checkbox"
-                      className="h-4 w-4 text-[#bfa14a] focus:ring-[#bfa14a] border-gray-300 rounded"
+                      className="h-4 w-4 text-[#7cabfc] focus:ring-[#7cabfc] border-gray-300 rounded"
                     />
                     <label
                       htmlFor="remember-me"
@@ -332,7 +332,7 @@ const Login: React.FC = () => {
                   <div className="text-sm">
                     <a
                       href="#"
-                      className="font-medium text-gray-600 hover:text-[#bfa14a] transition-colors duration-200"
+                      className="font-medium text-gray-600 hover:text-[#7cabfc] transition-colors duration-200"
                       style={{ fontFamily: "Tahoma" }}
                     >
                       Forgot password?
@@ -343,7 +343,7 @@ const Login: React.FC = () => {
                 <div>
                   <button
                     type="submit"
-                    className="group w-full flex justify-center py-3 px-4 border border-transparent rounded-xl shadow-lg text-sm font-medium text-white bg-gradient-to-r from-[#bfa14a] to-amber-600 hover:from-amber-600 hover:to-[#bfa14a] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#bfa14a] transform hover:scale-[1.02] transition-all duration-200"
+                    className="group w-full flex justify-center py-3 px-4 border border-transparent rounded-xl shadow-lg text-sm font-medium text-white bg-gradient-to-r from-[#7cabfc] to-blue-600 hover:from-blue-600 hover:to-[#7cabfc] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#7cabfc] transform hover:scale-[1.02] transition-all duration-200"
                     style={{ fontFamily: "Tahoma" }}
                   >
                     <span
@@ -378,7 +378,7 @@ const Login: React.FC = () => {
                   No account yet?{" "}
                   <Link
                     to="/register"
-                    className="font-medium text-gray-600 hover:text-[#bfa14a] transition-colors duration-200"
+                    className="font-medium text-gray-600 hover:text-[#7cabfc] transition-colors duration-200"
                     style={{ fontFamily: "Tahoma" }}
                   >
                     Create your account

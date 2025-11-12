@@ -183,7 +183,7 @@ const ViewRecords: React.FC = () => {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#bfa14a] mx-auto"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#7cabfc] mx-auto"></div>
           <p className="mt-4 text-gray-600">Loading records...</p>
         </div>
       </div>
@@ -204,7 +204,7 @@ const ViewRecords: React.FC = () => {
         </div>
 
         {/* Search and Filters Bar */}
-        <div className="bg-white shadow-lg rounded-xl p-6 border border-[#bfa14a]">
+        <div className="bg-white shadow-lg rounded-xl p-6 border border-[#7cabfc]">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
             <div className="flex-1">
               <div className="relative">
@@ -228,7 +228,7 @@ const ViewRecords: React.FC = () => {
                   placeholder="Search by driver, plate number, car model, or part..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="block w-full pl-10 pr-3 py-3 border-2 border-[#bfa14a] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#bfa14a] focus:border-transparent transition-all duration-200"
+                  className="block w-full pl-10 pr-3 py-3 border-2 border-[#7cabfc] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7cabfc] focus:border-transparent transition-all duration-200"
                 />
               </div>
             </div>
@@ -239,7 +239,7 @@ const ViewRecords: React.FC = () => {
               <select
                 value={plateFilter}
                 onChange={(e) => setPlateFilter(e.target.value)}
-                className="px-3 py-2 border-2 border-[#bfa14a] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#bfa14a] focus:border-transparent transition-all duration-200"
+                className="px-3 py-2 border-2 border-[#7cabfc] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7cabfc] focus:border-transparent transition-all duration-200"
               >
                 <option value="all">All Plate Numbers</option>
                 {plateNumbers.map((plate) => (
@@ -253,7 +253,7 @@ const ViewRecords: React.FC = () => {
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="px-3 py-2 border-2 border-[#bfa14a] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#bfa14a] focus:border-transparent transition-all duration-200"
+                className="px-3 py-2 border-2 border-[#7cabfc] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7cabfc] focus:border-transparent transition-all duration-200"
               >
                 <option value="all">All Status</option>
                 <option value="completed">Completed</option>
@@ -265,7 +265,7 @@ const ViewRecords: React.FC = () => {
               <select
                 value={costFilter}
                 onChange={(e) => setCostFilter(e.target.value)}
-                className="px-3 py-2 border-2 border-[#bfa14a] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#bfa14a] focus:border-transparent transition-all duration-200"
+                className="px-3 py-2 border-2 border-[#7cabfc] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7cabfc] focus:border-transparent transition-all duration-200"
               >
                 <option value="all">All Costs</option>
                 <option value="low">Low ($0-100)</option>
@@ -277,7 +277,7 @@ const ViewRecords: React.FC = () => {
               <select
                 value={dateFilter}
                 onChange={(e) => setDateFilter(e.target.value)}
-                className="px-3 py-2 border-2 border-[#bfa14a] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#bfa14a] focus:border-transparent transition-all duration-200"
+                className="px-3 py-2 border-2 border-[#7cabfc] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7cabfc] focus:border-transparent transition-all duration-200"
               >
                 <option value="newest">Newest First</option>
                 <option value="oldest">Oldest First</option>
@@ -303,7 +303,7 @@ const ViewRecords: React.FC = () => {
                     setCostFilter("all");
                     setDateFilter("newest");
                   }}
-                  className="px-3 py-2 text-sm text-[#bfa14a] hover:text-[#a58c3b] font-medium transition-colors"
+                  className="px-3 py-2 text-sm text-[#7cabfc] hover:text-[#5a8de8] font-medium transition-colors"
                 >
                   Clear All
                 </button>
@@ -317,7 +317,7 @@ const ViewRecords: React.FC = () => {
           {currentRecords.map((record) => (
             <div
               key={record.id}
-              className="bg-white shadow-lg rounded-xl border border-[#bfa14a] overflow-hidden hover:shadow-xl transition-shadow duration-300"
+              className="bg-white shadow-lg rounded-xl border border-[#7cabfc] overflow-hidden hover:shadow-xl transition-shadow duration-300"
             >
               {/* Record Summary */}
               <div className="p-6">
@@ -361,7 +361,7 @@ const ViewRecords: React.FC = () => {
                     <div className="text-xs font-medium text-gray-500 uppercase tracking-wide mb-1">
                       Total Cost
                     </div>
-                    <div className="text-lg font-semibold text-[#bfa14a]">
+                    <div className="text-lg font-semibold text-[#7cabfc]">
                       ${record.totalCost.toFixed(2)}
                     </div>
                   </div>
@@ -474,7 +474,7 @@ const ViewRecords: React.FC = () => {
                 <div className="border-t border-gray-200 bg-gray-50/50">
                   <div className="p-6">
                     <div className="flex items-center space-x-3 mb-6">
-                      <div className="w-2 h-6 bg-[#bfa14a] rounded-full"></div>
+                      <div className="w-2 h-6 bg-[#7cabfc] rounded-full"></div>
                       <h3 className="text-lg font-semibold text-gray-900">
                         Parts Details
                       </h3>
@@ -546,7 +546,7 @@ const ViewRecords: React.FC = () => {
                               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                 {formatDate(part.changeDate)}
                               </td>
-                              <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-[#bfa14a]">
+                              <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-[#7cabfc]">
                                 ${part.cost.toFixed(2)}
                               </td>
                             </tr>
@@ -616,7 +616,7 @@ const ViewRecords: React.FC = () => {
                             <div className="font-medium text-gray-500">
                               Cost:
                             </div>
-                            <div className="font-bold text-[#bfa14a]">
+                            <div className="font-bold text-[#7cabfc]">
                               ${part.cost.toFixed(2)}
                             </div>
                           </div>
@@ -649,7 +649,7 @@ const ViewRecords: React.FC = () => {
                     onClick={() => setCurrentPage(page)}
                     className={`px-3 py-1 text-sm font-semibold rounded-lg transition-colors duration-200 ${
                       currentPage === page
-                        ? "bg-[#bfa14a] text-white"
+                        ? "bg-[#7cabfc] text-white"
                         : "text-gray-700 bg-gray-100 hover:bg-gray-200"
                     }`}
                   >
@@ -700,14 +700,14 @@ const ViewRecords: React.FC = () => {
                   setStatusFilter("all");
                   setCostFilter("all");
                 }}
-                className="px-6 py-3 bg-[#bfa14a] text-white font-semibold rounded-lg hover:bg-[#a58c3b] transition-colors duration-200"
+                className="px-6 py-3 bg-[#7cabfc] text-white font-semibold rounded-lg hover:bg-[#5a8de8] transition-colors duration-200"
               >
                 Clear Filters
               </button>
             ) : (
               <button
                 onClick={() => navigate("/add-record")}
-                className="px-6 py-3 bg-[#bfa14a] text-white font-semibold rounded-lg hover:bg-[#a58c3b] transition-colors duration-200"
+                className="px-6 py-3 bg-[#7cabfc] text-white font-semibold rounded-lg hover:bg-[#5a8de8] transition-colors duration-200"
               >
                 Add First Record
               </button>

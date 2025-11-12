@@ -80,7 +80,7 @@ const EditProfile: React.FC = () => {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#bfa14a] mx-auto"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#7cabfc] mx-auto"></div>
           <p className="mt-4 text-gray-600">Loading profile...</p>
         </div>
       </div>
@@ -92,7 +92,7 @@ const EditProfile: React.FC = () => {
       <div className="max-w-4xl mx-auto">
         {/* Header with Gradient Background */}
         <div className="bg-gradient-to-r from-gray-50 to-gray-100 px-8 py-6 border-b border-gray-200 rounded-2xl p-8 text-center mb-8 shadow-lg">
-          <div className="w-20 h-20 bg-gradient-to-br from-[#bfa14a] to-amber-600 rounded-full flex items-center justify-center mx-auto mb-4">
+          <div className="w-20 h-20 bg-gradient-to-br from-[#7cabfc] to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
             <svg
               className="w-10 h-10 text-white"
               fill="none"
@@ -116,12 +116,12 @@ const EditProfile: React.FC = () => {
         </div>
 
         {/* Profile Information Card */}
-        <div className="bg-white shadow-xl rounded-2xl overflow-hidden border border-[#bfa14a]/20">
+        <div className="bg-white shadow-xl rounded-2xl overflow-hidden border border-[#7cabfc]/20">
           {/* Card Header */}
           <div className="bg-gradient-to-r from-gray-50 to-gray-100 px-8 py-6 border-b border-gray-200">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#bfa14a] to-amber-600 rounded-xl flex items-center justify-center shadow-lg">
+                <div className="w-12 h-12 bg-gradient-to-br from-[#7cabfc] to-blue-600 rounded-xl flex items-center justify-center shadow-lg">
                   <svg
                     className="w-6 h-6 text-white"
                     fill="none"
@@ -143,8 +143,8 @@ const EditProfile: React.FC = () => {
                   <p className="text-gray-600">Manage your account details</p>
                 </div>
               </div>
-              <div className="bg-white px-4 py-2 rounded-full border border-[#bfa14a] shadow-sm">
-                <span className="text-sm font-semibold text-[#bfa14a]">
+              <div className="bg-white px-4 py-2 rounded-full border border-[#7cabfc] shadow-sm">
+                <span className="text-sm font-semibold text-[#7cabfc]">
                   Personal
                 </span>
               </div>
@@ -165,7 +165,7 @@ const EditProfile: React.FC = () => {
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <svg
-                          className="h-5 w-5 text-gray-400 group-focus-within:text-[#bfa14a]"
+                          className="h-5 w-5 text-gray-400 group-focus-within:text-[#7cabfc]"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -184,7 +184,7 @@ const EditProfile: React.FC = () => {
                         value={profile.name}
                         onChange={handleInputChange}
                         placeholder="Enter your full name"
-                        className="w-full pl-10 pr-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#bfa14a] focus:border-[#bfa14a] transition-all duration-300 group-hover:border-gray-300"
+                        className="w-full pl-10 pr-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#7cabfc] focus:border-[#7cabfc] transition-all duration-300 group-hover:border-gray-300"
                         required
                         disabled={loading}
                       />
@@ -199,7 +199,7 @@ const EditProfile: React.FC = () => {
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <svg
-                          className="h-5 w-5 text-gray-400 group-focus-within:text-[#bfa14a]"
+                          className="h-5 w-5 text-gray-400 group-focus-within:text-[#7cabfc]"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -218,7 +218,7 @@ const EditProfile: React.FC = () => {
                         value={profile.email}
                         onChange={handleInputChange}
                         placeholder="your.email@example.com"
-                        className="w-full pl-10 pr-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#bfa14a] focus:border-[#bfa14a] transition-all duration-300 group-hover:border-gray-300"
+                        className="w-full pl-10 pr-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#7cabfc] focus:border-[#7cabfc] transition-all duration-300 group-hover:border-gray-300"
                         required
                         disabled={loading}
                       />
@@ -236,7 +236,7 @@ const EditProfile: React.FC = () => {
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <svg
-                          className="h-5 w-5 text-gray-400 group-focus-within:text-[#bfa14a]"
+                          className="h-5 w-5 text-gray-400 group-focus-within:text-[#7cabfc]"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -255,7 +255,7 @@ const EditProfile: React.FC = () => {
                         value={profile.phone}
                         onChange={handleInputChange}
                         placeholder="+1 (555) 123-4567"
-                        className="w-full pl-10 pr-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#bfa14a] focus:border-[#bfa14a] transition-all duration-300 group-hover:border-gray-300"
+                        className="w-full pl-10 pr-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#7cabfc] focus:border-[#7cabfc] transition-all duration-300 group-hover:border-gray-300"
                         disabled={loading}
                       />
                     </div>
@@ -269,7 +269,7 @@ const EditProfile: React.FC = () => {
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <svg
-                          className="h-5 w-5 text-gray-400 group-focus-within:text-[#bfa14a]"
+                          className="h-5 w-5 text-gray-400 group-focus-within:text-[#7cabfc]"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -288,7 +288,7 @@ const EditProfile: React.FC = () => {
                         value={profile.company}
                         onChange={handleInputChange}
                         placeholder="Your company name"
-                        className="w-full pl-10 pr-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#bfa14a] focus:border-[#bfa14a] transition-all duration-300 group-hover:border-gray-300"
+                        className="w-full pl-10 pr-4 py-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#7cabfc] focus:border-[#7cabfc] transition-all duration-300 group-hover:border-gray-300"
                         disabled={loading}
                       />
                     </div>
@@ -355,7 +355,7 @@ const EditProfile: React.FC = () => {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="px-8 py-4 bg-gradient-to-r from-[#bfa14a] to-amber-600 text-white font-semibold rounded-xl hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#bfa14a] disabled:opacity-50 transition-all duration-200 flex items-center justify-center space-x-2 shadow-md hover:shadow-xl"
+                    className="px-8 py-4 bg-gradient-to-r from-[#7cabfc] to-blue-600 text-white font-semibold rounded-xl hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#7cabfc] disabled:opacity-50 transition-all duration-200 flex items-center justify-center space-x-2 shadow-md hover:shadow-xl"
                   >
                     {loading ? (
                       <>
@@ -406,11 +406,11 @@ const EditProfile: React.FC = () => {
         </div>
 
         {/* Additional Info Card */}
-        <div className="mt-8 bg-gradient-to-r from-amber-50 to-yellow-50 rounded-2xl p-6 border border-amber-200">
+        <div className="mt-8 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-6 border border-blue-200">
           <div className="flex items-start space-x-4">
-            <div className="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center flex-shrink-0">
+            <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
               <svg
-                className="w-6 h-6 text-amber-600"
+                className="w-6 h-6 text-blue-600"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -424,10 +424,10 @@ const EditProfile: React.FC = () => {
               </svg>
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-amber-900 mb-2">
+              <h3 className="text-lg font-semibold text-blue-900 mb-2">
                 Profile Information
               </h3>
-              <p className="text-amber-700">
+              <p className="text-blue-700">
                 Keep your profile information up to date to ensure the best
                 experience with our maintenance management system. Your data is
                 securely stored and only used to personalize your experience.

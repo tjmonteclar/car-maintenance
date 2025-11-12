@@ -135,7 +135,7 @@ const Dashboard: React.FC = () => {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#bfa14a] mx-auto"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#7cabfc] mx-auto"></div>
           <p className="mt-4 text-gray-600">Loading dashboard...</p>
         </div>
       </div>
@@ -157,32 +157,32 @@ const Dashboard: React.FC = () => {
       <div className="space-y-6 lg:space-y-8">
         {/* Summary Cards with enhanced design */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-          <div className="bg-gradient-to-br from-white to-gray-50 shadow-lg rounded-2xl p-4 lg:p-6 border border-[#bfa14a]/20 hover:shadow-2xl transition-all duration-300 group hover:scale-[1.02]">
+          <div className="bg-gradient-to-br from-white to-gray-50 shadow-lg rounded-2xl p-4 lg:p-6 border border-[#7cabfc]/20 hover:shadow-2xl transition-all duration-300 group hover:scale-[1.02]">
             <div className="flex items-center justify-between">
               <div>
                 <h3 className="text-gray-500 text-sm font-medium uppercase tracking-wider">
                   Total Records
                 </h3>
-                <p className="text-2xl lg:text-3xl font-bold text-gray-800 mt-2 bg-gradient-to-r from-gray-800 to-[#bfa14a] bg-clip-text text-transparent">
+                <p className="text-2xl lg:text-3xl font-bold text-gray-800 mt-2 bg-gradient-to-r from-gray-800 to-[#7cabfc] bg-clip-text text-transparent">
                   {stats.totalRecords}
                 </p>
                 <p className="text-gray-500 text-xs lg:text-sm mt-1">
                   Maintenance visits
                 </p>
               </div>
-              <div className="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-[#bfa14a] to-amber-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+              <div className="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-[#7cabfc] to-blue-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
                 <span className="text-white text-lg">📊</span>
               </div>
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-white to-gray-50 shadow-lg rounded-2xl p-4 lg:p-6 border border-[#bfa14a]/20 hover:shadow-2xl transition-all duration-300 group hover:scale-[1.02]">
+          <div className="bg-gradient-to-br from-white to-gray-50 shadow-lg rounded-2xl p-4 lg:p-6 border border-[#7cabfc]/20 hover:shadow-2xl transition-all duration-300 group hover:scale-[1.02]">
             <div className="flex items-center justify-between">
               <div>
                 <h3 className="text-gray-500 text-sm font-medium uppercase tracking-wider">
                   Parts Replaced
                 </h3>
-                <p className="text-2xl lg:text-3xl font-bold text-gray-800 mt-2 bg-gradient-to-r from-gray-800 to-[#bfa14a] bg-clip-text text-transparent">
+                <p className="text-2xl lg:text-3xl font-bold text-gray-800 mt-2 bg-gradient-to-r from-gray-800 to-[#7cabfc] bg-clip-text text-transparent">
                   {stats.partsReplaced}
                 </p>
                 <p className="text-gray-500 text-xs lg:text-sm mt-1">
@@ -194,13 +194,13 @@ const Dashboard: React.FC = () => {
                   total
                 </p>
               </div>
-              <div className="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-[#bfa14a] to-amber-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+              <div className="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-[#7cabfc] to-blue-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
                 <span className="text-white text-lg">🔧</span>
               </div>
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-white to-gray-50 shadow-lg rounded-2xl p-4 lg:p-6 border border-[#bfa14a]/20 hover:shadow-2xl transition-all duration-300 group hover:scale-[1.02]">
+          <div className="bg-gradient-to-br from-white to-gray-50 shadow-lg rounded-2xl p-4 lg:p-6 border border-[#7cabfc]/20 hover:shadow-2xl transition-all duration-300 group hover:scale-[1.02]">
             <div className="flex items-center justify-between">
               <div>
                 <h3 className="text-gray-500 text-sm font-medium uppercase tracking-wider">
@@ -213,13 +213,13 @@ const Dashboard: React.FC = () => {
                   All maintenance
                 </p>
               </div>
-              <div className="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-[#bfa14a] to-amber-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+              <div className="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-[#7cabfc] to-blue-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
                 <span className="text-white text-lg">💰</span>
               </div>
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-white to-gray-50 shadow-lg rounded-2xl p-4 lg:p-6 border border-[#bfa14a]/20 hover:shadow-2xl transition-all duration-300 group hover:scale-[1.02]">
+          <div className="bg-gradient-to-br from-white to-gray-50 shadow-lg rounded-2xl p-4 lg:p-6 border border-[#7cabfc]/20 hover:shadow-2xl transition-all duration-300 group hover:scale-[1.02]">
             <div className="flex items-center justify-between">
               <div>
                 <h3 className="text-gray-500 text-sm font-medium uppercase tracking-wider">
@@ -238,7 +238,7 @@ const Dashboard: React.FC = () => {
                     : "No records"}
                 </p>
               </div>
-              <div className="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-[#bfa14a] to-amber-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+              <div className="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-[#7cabfc] to-blue-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
                 <span className="text-white text-lg">🚗</span>
               </div>
             </div>
@@ -247,12 +247,12 @@ const Dashboard: React.FC = () => {
 
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
           {/* Parts Breakdown */}
-          <div className="xl:col-span-1 bg-white shadow-lg rounded-2xl p-6 border border-[#bfa14a]/20">
+          <div className="xl:col-span-1 bg-white shadow-lg rounded-2xl p-6 border border-[#7cabfc]/20">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-xl font-semibold text-gray-900">
                 Parts Replacement
               </h2>
-              <span className="text-sm text-gray-500 bg-gradient-to-r from-gray-100 to-[#bfa14a]/10 px-3 py-1 rounded-full border">
+              <span className="text-sm text-gray-500 bg-gradient-to-r from-gray-100 to-[#7cabfc]/10 px-3 py-1 rounded-full border">
                 {stats.partsReplaced} replaced
               </span>
             </div>
@@ -262,16 +262,16 @@ const Dashboard: React.FC = () => {
                 .map(([partType, count], index) => (
                   <div
                     key={partType}
-                    className="flex items-center justify-between p-4 bg-gradient-to-r from-gray-50 to-white rounded-xl hover:from-[#bfa14a]/5 hover:to-white transition-all duration-300 group border border-transparent hover:border-[#bfa14a]/20"
+                    className="flex items-center justify-between p-4 bg-gradient-to-r from-gray-50 to-white rounded-xl hover:from-[#7cabfc]/5 hover:to-white transition-all duration-300 group border border-transparent hover:border-[#7cabfc]/20"
                   >
                     <div className="flex items-center space-x-4">
                       <div>
-                        <span className="font-semibold text-gray-800 group-hover:text-[#bfa14a] transition-colors duration-300">
+                        <span className="font-semibold text-gray-800 group-hover:text-[#7cabfc] transition-colors duration-300">
                           {partType}
                         </span>
                         <div className="w-24 bg-gray-200 rounded-full h-2 mt-1">
                           <div
-                            className="bg-gradient-to-r from-[#bfa14a] to-amber-600 h-2 rounded-full transition-all duration-1000 ease-out"
+                            className="bg-gradient-to-r from-[#7cabfc] to-blue-600 h-2 rounded-full transition-all duration-1000 ease-out"
                             style={{
                               width: `${Math.round(
                                 (count / stats.partsReplaced) * 100
@@ -282,7 +282,7 @@ const Dashboard: React.FC = () => {
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="w-10 h-10 bg-gradient-to-br from-[#bfa14a] to-amber-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                      <div className="w-10 h-10 bg-gradient-to-br from-[#7cabfc] to-blue-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                         <span className="text-white font-bold text-sm">
                           {count}
                         </span>
@@ -300,12 +300,12 @@ const Dashboard: React.FC = () => {
           </div>
 
           {/* Cost Trend Chart */}
-          <div className="xl:col-span-1 bg-white shadow-lg rounded-2xl p-6 border border-[#bfa14a]/20">
+          <div className="xl:col-span-1 bg-white shadow-lg rounded-2xl p-6 border border-[#7cabfc]/20">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-xl font-semibold text-gray-900">
                 Cost Trend
               </h2>
-              <span className="text-sm text-gray-500 bg-gradient-to-r from-gray-100 to-[#bfa14a]/10 px-3 py-1 rounded-full border">
+              <span className="text-sm text-gray-500 bg-gradient-to-r from-gray-100 to-[#7cabfc]/10 px-3 py-1 rounded-full border">
                 Last 6 months
               </span>
             </div>
@@ -326,7 +326,7 @@ const Dashboard: React.FC = () => {
                         </div>
                       </div>
                       <div
-                        className="w-3/4 bg-gradient-to-t from-[#bfa14a] to-amber-600 rounded-t-lg transition-all duration-1000 ease-out hover:from-amber-500 hover:to-[#bfa14a] hover:shadow-lg"
+                        className="w-3/4 bg-gradient-to-t from-[#7cabfc] to-blue-600 rounded-t-lg transition-all duration-1000 ease-out hover:from-blue-500 hover:to-[#7cabfc] hover:shadow-lg"
                         style={{
                           height:
                             item.cost > 0
@@ -352,12 +352,12 @@ const Dashboard: React.FC = () => {
           </div>
 
           {/* Recent Maintenance Records */}
-          <div className="xl:col-span-1 bg-white shadow-lg rounded-2xl p-6 border border-[#bfa14a]/20">
+          <div className="xl:col-span-1 bg-white shadow-lg rounded-2xl p-6 border border-[#7cabfc]/20">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-xl font-semibold text-gray-900">
                 Recent Records
               </h2>
-              <span className="text-sm text-gray-500 bg-gradient-to-r from-gray-100 to-[#bfa14a]/10 px-3 py-1 rounded-full border">
+              <span className="text-sm text-gray-500 bg-gradient-to-r from-gray-100 to-[#7cabfc]/10 px-3 py-1 rounded-full border">
                 Last 5
               </span>
             </div>
@@ -377,11 +377,11 @@ const Dashboard: React.FC = () => {
                 {records.slice(0, 5).map((record) => (
                   <div
                     key={record.id}
-                    className="border border-gray-200 rounded-xl p-4 hover:border-[#bfa14a] hover:shadow-md transition-all duration-300 group bg-gradient-to-r from-white to-gray-50 hover:from-[#bfa14a]/5"
+                    className="border border-gray-200 rounded-xl p-4 hover:border-[#7cabfc] hover:shadow-md transition-all duration-300 group bg-gradient-to-r from-white to-gray-50 hover:from-[#7cabfc]/5"
                   >
                     <div className="flex items-center justify-between">
                       <div>
-                        <h3 className="font-semibold text-gray-900 group-hover:text-[#bfa14a] transition-colors duration-300">
+                        <h3 className="font-semibold text-gray-900 group-hover:text-[#7cabfc] transition-colors duration-300">
                           {record.driverName}
                         </h3>
                         <p className="text-sm text-gray-600">
@@ -389,7 +389,7 @@ const Dashboard: React.FC = () => {
                         </p>
                       </div>
                       <div className="text-right">
-                        <p className="font-bold text-gray-900 bg-gradient-to-r from-gray-800 to-[#bfa14a] bg-clip-text text-transparent">
+                        <p className="font-bold text-gray-900 bg-gradient-to-r from-gray-800 to-[#7cabfc] bg-clip-text text-transparent">
                           ${record.totalCost.toFixed(2)}
                         </p>
                         <p className="text-sm text-gray-500">
