@@ -49,7 +49,7 @@ const ViewRecords: React.FC = () => {
   const fetchRecords = async () => {
     try {
       const response = await fetch(
-        "https://car-maintenance-backend.vercel.app"
+        "https://car-maintenance-backend.vercel.app/records" // ← FIXED: Added /records endpoint
       );
       if (!response.ok) {
         throw new Error("Failed to fetch records");
@@ -58,7 +58,7 @@ const ViewRecords: React.FC = () => {
       setRecords(data);
     } catch (error) {
       console.error("Error fetching records:", error);
-      alert("Failed to load records. Please make sure JSON Server is running.");
+      alert("Failed to load records. Please try again later.");
     } finally {
       setLoading(false);
     }
@@ -135,7 +135,7 @@ const ViewRecords: React.FC = () => {
       console.log("Deleting record with ID:", recordId);
 
       const response = await fetch(
-        `http://localhost:3001/records/${recordId}`,
+        `https://car-maintenance-backend.vercel.app/records/${recordId}`, // ← FIXED: Use Vercel backend
         {
           method: "DELETE",
         }
